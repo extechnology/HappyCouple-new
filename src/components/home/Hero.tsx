@@ -1,0 +1,230 @@
+import { motion } from "framer-motion";
+import Slider from "../common/Slider";
+import { BoxReveal } from "../magicui/box-reveal";
+
+
+
+
+const HeroSection = () => {
+
+
+    // Define animation variants
+    const textVariants = {
+        hidden: { opacity: 0, y: 50 },
+        visible: { opacity: 1, y: 0, transition: { duration: 1 } },
+    };
+
+
+
+    const buttonVariants = {
+        hidden: { opacity: 0, y: 30 },
+        visible: { opacity: 1, y: 0, transition: { duration: 1, delay: 0.5 } },
+    };
+
+
+
+    return (
+        <section className="w-full py-8 sm:py-14 px-2 md:px-16 lg:px-24 flex flex-col lg:flex-row items-center justify-between relative overflow-hidden">
+
+
+            {/* Background Text */}
+            <motion.div
+                className="absolute text-[8rem] font-bold bg-gradient-to-b from-[#A7E8E0] to-[#E9F4F5] bg-clip-text text-transparent opacity-70 top-0 left-0 leading-none z-0 select-none hidden lg:block"
+                initial="hidden"
+                animate="visible"
+                variants={textVariants}
+            >
+                <div>HAPPY</div>
+                <div>COUPLES</div>
+            </motion.div>
+
+
+
+            {/* Heading Mobile */}
+            <motion.h1
+                className="text-3xl mb-8 md:text-4xl font-bold text-[#1B1B1B] leading-snug sm:hidden block text-center"
+                initial="hidden"
+                animate="visible"
+                variants={textVariants}
+            >
+                <BoxReveal boxColor={"#25434E"} duration={0.6}>
+
+                    <span className="relative inline-block">
+                        <span className="relative inline-block z-10 text-4xl">S</span>
+                        <img
+                            src="/svgs/hero-text.svg"
+                            alt="svg-logo"
+                            loading="lazy"
+                            className="absolute -top-3 -left-2 w-6 h-6 z-20"
+                        />
+                    </span>
+
+                    cientifically Guided.<br />
+
+                </BoxReveal>
+
+
+                <BoxReveal boxColor={"#25434E"} duration={0.6}>
+
+                    Globally Trusted.<br />
+
+                </ BoxReveal>
+
+
+                <BoxReveal boxColor={"#25434E"} duration={0.6}>
+
+                    Personally{" "}
+
+                    <span className="relative inline-block text-[#145566]">
+                        Tailored.
+                        <img
+                            src="/svgs/hero-text-underline.svg"
+                            alt="svg-logo"
+                            loading="lazy"
+                            className="absolute -bottom-1 left-0 w-full pointer-events-none"
+                        />
+                    </span>
+
+                </BoxReveal>
+
+            </motion.h1>
+
+
+
+            {/* Image */}
+            <div className="relative z-20 rounded-[20px] w-full max-w-md">
+
+
+                <Slider />
+
+
+                {/* Top Left SVG icon */}
+                <div className="absolute top-[-20px] left-[-24px] -z-1">
+                    <img src="/svgs/Star-icon.svg" loading="lazy" className="w-[50px] h-[55px]" alt="svg-logo" />
+                </div>
+
+
+                {/* Bottom Right Dot Grid */}
+                <div className="absolute bottom-[-40px] right-[-85px] w-64 h-64 rounded-full overflow-hidden -z-1 text-[#25434E]">
+
+                    <svg id="patternId" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <pattern
+                                id="b"
+                                patternUnits="userSpaceOnUse"
+                                width="40"
+                                height="40"
+                                patternTransform="scale(0.6)"
+                            >
+                                <rect x="0" y="0" width="100%" height="100%" fill="none" />
+                                <path
+                                    d="M11 6a5 5 0 01-5 5 5 5 0 01-5-5 5 5 0 015-5 5 5 0 015 5"
+                                    strokeWidth="1"
+                                    stroke="none"
+                                    fill="currentColor"
+                                />
+                            </pattern>
+                        </defs>
+                        <rect width="800%" height="800%" transform="translate(0,0)" fill="url(#b)" />
+                    </svg>
+
+                </div>
+
+
+            </div>
+
+
+
+            {/* Text Content */}
+            <motion.div
+                className="mt-10 lg:mt-0 lg:ml-20 z-10 lg:text-left"
+                initial="hidden"
+                animate="visible"
+                variants={textVariants}
+            >
+
+
+                {/* Heading Desktop */}
+                <h1 className="text-3xl md:text-6xl font-bold text-[#1B1B1B] leading-snug sm:block hidden">
+
+                    <BoxReveal boxColor={"#25434E"} duration={0.6}>
+                        <span className="relative inline-block">
+                            <span className="relative inline-block z-10">S</span>
+                            <img
+                                src="/svgs/hero-text.svg"
+                                alt="svg-logo"
+                                loading="lazy"
+                                className="absolute -top-0 -left-2 w-6 h-6 z-20 ponin"
+                            />
+                        </span>
+
+                        cientifically Guided.<br />
+                    </BoxReveal>
+
+                    <BoxReveal boxColor={"#25434E"} duration={0.6}>
+
+                        Globally Trusted.<br />
+
+                    </BoxReveal>
+
+
+                    <BoxReveal boxColor={"#25434E"} duration={0.6}>
+
+                        Personally{" "}
+
+                        <span className="relative inline-block text-[#204D5B]">
+                            Tailored.
+                            <img
+                                src="/svgs/hero-text-underline.svg"
+                                alt="svg-logo"
+                                loading="lazy"
+                                className="absolute -bottom-2 left-0 w-full pointer-events-none"
+                            />
+                        </span>
+
+                    </BoxReveal>
+
+                </h1>
+
+
+
+                {/* Buttons */}
+                <motion.div
+                    className="mt-8 flex flex-col sm:flex-row sm:items-center sm:space-x-4 space-y-4 sm:space-y-0"
+                    initial="hidden"
+                    animate="visible"
+                    variants={buttonVariants}
+                >
+                    <button className="bg-[#25434E] hover:cursor-pointer text-white px-5 py-3 rounded-md font-semibold shadow-md transition duration-300 hover:bg-[#1b353d] hover:scale-105">
+                        START SELF-ASSESSMENT
+                    </button>
+
+                    <button className="border-2 hover:cursor-pointer border-[#25434E] text-[#25434E] px-6 py-3 rounded-md font-semibold transition duration-300 hover:bg-[#25434E] hover:text-white hover:scale-105">
+                        TALK TO AN EXPERT
+                    </button>
+
+                    <button className="bg-[#25434E] hover:cursor-pointer text-white px-5 py-3 rounded-md font-semibold shadow-md transition duration-300 hover:bg-[#1b353d] hover:scale-105">
+                        EXPLORE TREATMENT PLANS
+                    </button>
+                </motion.div>
+
+
+            </motion.div>
+
+
+            {/* Background Text */}
+            <motion.div
+                className="absolute -bottom-14 -right-96 text-[8rem] font-bold bg-gradient-to-b from-[#A7E8E0] to-[#E9F4F5] bg-clip-text text-transparent opacity-70 leading-none z-0 select-none hidden lg:block"
+                initial="hidden"
+                animate="visible"
+                variants={textVariants}
+            >
+                <div>HAPPY</div>
+                <div>COUPLES</div>
+            </motion.div>
+
+        </section >
+    );
+};
+
+export default HeroSection;

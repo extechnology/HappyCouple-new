@@ -4,6 +4,7 @@ import {
     AccordionItem,
     AccordionTrigger,
 } from "@/components/ui/accordion"
+import { Link } from "react-router-dom"
 
 
 
@@ -20,16 +21,16 @@ export default function FrequentlyAsked() {
                 "Yes, We follow the globally recognised European Association of Urology (EAU) guidelines.",
         },
         {
-            question: "Is the ₹300 consultation Refunded?",
-            answer: "Yes, We follow the globally recognised European Association of Urology (EAU) guidelines.",
+            question: "Is the ₹69 consultation Refunded?",
+            answer: "Yes, fully refunded when you begin any treatment.",
         },
         {
             question: "Are your products safe?",
-            answer: "Yes, We follow the globally recognised European Association of Urology (EAU) guidelines.",
+            answer: "All treatment are clinically validated.",
         },
         {
             question: "Is everything confidential?",
-            answer: "Yes, We follow the globally recognised European Association of Urology (EAU) guidelines.",
+            answer: "100% private and secure.",
         },
     ]
 
@@ -100,6 +101,7 @@ export default function FrequentlyAsked() {
                 {/* Contact Box */}
                 <div className="bg-white rounded-lg p-8 flex flex-col items-center text-center gap-6 max-w-7xl mx-auto mt-10">
 
+
                     <div className="flex flex-col items-center gap-4">
 
                         <img
@@ -115,9 +117,12 @@ export default function FrequentlyAsked() {
 
                     </div>
 
-                    <button className="bg-[#145566] hover:bg-[#0f3f4d] hover:scale-[1.03] active:scale-95 transition-all duration-200 ease-in-out transform cursor-pointer text-white text-sm font-medium py-2.5 px-6 rounded-md shadow-sm hover:shadow-md focus:outline-none focus:ring-2 focus:ring-[#145566]">
-                        Contact Us
-                    </button>
+
+                    <Link to={'/contactus'}>
+                        <button className="bg-[#145566] hover:bg-[#0f3f4d] hover:scale-[1.03] active:scale-95 transition-all duration-200 ease-in-out transform cursor-pointer text-white text-sm font-medium py-2.5 px-6 rounded-md shadow-sm hover:shadow-md focus:outline-none focus:ring-2 focus:ring-[#145566]">
+                            Contact Us
+                        </button>
+                    </Link>
 
 
                 </div>

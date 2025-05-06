@@ -1,10 +1,11 @@
 import { User, MessageSquare, FileText, PhoneCall } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export default function Connection() {
 
 
     return (
-        
+
         <section className="px-2 py-12 text-center">
 
 
@@ -31,7 +32,7 @@ export default function Connection() {
                     <p className="text-[#5f6368] text-base md:text-lg mb-10">
                         Start with our quick, private self-assessment or talk to an expert now
                     </p>
-                    
+
                 </div>
 
 
@@ -43,9 +44,11 @@ export default function Connection() {
                     <div className="bg-[#25434E] text-white rounded-xl p-8 shadow-md flex flex-col items-center transform transition-transform duration-300 hover:scale-105 hover:shadow-lg">
                         <User className="h-6 w-6 mb-4" />
                         <p className="mb-4 font-medium">Start Self-Assessment</p>
-                        <button className="bg-white hover:cursor-pointer text-[#1f3f45] font-semibold px-5 py-2 rounded shadow transition-transform transform hover:scale-105 hover:shadow-md">
-                            Begin Now
-                        </button>
+                        <Link to="/self-assessment">
+                            <button className="bg-white hover:cursor-pointer text-[#1f3f45] font-semibold px-5 py-2 rounded shadow transition-transform transform hover:scale-105 hover:shadow-md">
+                                Begin Now
+                            </button>
+                        </Link>
                     </div>
 
 
@@ -53,9 +56,11 @@ export default function Connection() {
                     <div className="bg-white text-[#1f3f45] rounded-xl p-8 shadow-md flex flex-col items-center transform transition-transform duration-300 hover:scale-105 hover:shadow-lg">
                         <MessageSquare className="h-6 w-6 mb-4" />
                         <p className="mb-4 text-gray-600">Talk to an Expert</p>
-                        <button className="bg-black hover:cursor-pointer text-white font-semibold px-5 py-2 rounded shadow transition-transform transform hover:scale-105 hover:shadow-md">
-                            Connect Now
-                        </button>
+                        <Link to="/talktoexpert">
+                            <button className="bg-black hover:cursor-pointer text-white font-semibold px-5 py-2 rounded shadow transition-transform transform hover:scale-105 hover:shadow-md">
+                                Connect Now
+                            </button>
+                        </Link>
                     </div>
 
 
@@ -63,9 +68,11 @@ export default function Connection() {
                     <div className="bg-[#25434E] text-white rounded-xl p-8 shadow-md flex flex-col items-center transform transition-transform duration-300 hover:scale-105 hover:shadow-lg">
                         <FileText className="h-6 w-6 mb-4" />
                         <p className="mb-4 text-white">Book Consultation</p>
-                        <button className="bg-white hover:cursor-pointer text-[#1f3f45] font-semibold px-5 py-2 rounded shadow transition-transform transform hover:scale-105 hover:shadow-md">
-                            Book Consultation
-                        </button>
+                        <Link to="/consultation">
+                            <button className="bg-white hover:cursor-pointer text-[#1f3f45] font-semibold px-5 py-2 rounded shadow transition-transform transform hover:scale-105 hover:shadow-md">
+                                Book Consultation
+                            </button>
+                        </Link>
                     </div>
 
 
@@ -73,9 +80,11 @@ export default function Connection() {
                     <div className="bg-white text-[#1f3f45] rounded-xl p-8 shadow-md flex flex-col items-center transform transition-transform duration-300 hover:scale-105 hover:shadow-lg">
                         <PhoneCall className="h-6 w-6 mb-4" />
                         <p className="mb-4 text-gray-600">Contact Us</p>
-                        <button className="bg-black hover:cursor-pointer text-white font-semibold px-5 py-2 rounded shadow transition-transform transform hover:scale-105 hover:shadow-md">
-                            Contact Us
-                        </button>
+                        <Link to="/contactus">
+                            <button className="bg-black hover:cursor-pointer text-white font-semibold px-5 py-2 rounded shadow transition-transform transform hover:scale-105 hover:shadow-md">
+                                Contact Us
+                            </button>
+                        </Link>
                     </div>
 
                 </div>

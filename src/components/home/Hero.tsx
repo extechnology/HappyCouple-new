@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import Slider from "../common/Slider";
 import { BoxReveal } from "../magicui/box-reveal";
+import { Link } from "react-router-dom";
 
 
 
@@ -195,17 +196,28 @@ const HeroSection = () => {
                     animate="visible"
                     variants={buttonVariants}
                 >
-                    <button className="bg-[#25434E] hover:cursor-pointer text-white px-5 py-3 rounded-md font-semibold shadow-md transition duration-300 hover:bg-[#1b353d] hover:scale-105">
-                        START SELF-ASSESSMENT
-                    </button>
 
-                    <button className="border-2 hover:cursor-pointer border-[#25434E] text-[#25434E] px-6 py-3 rounded-md font-semibold transition duration-300 hover:bg-[#25434E] hover:text-white hover:scale-105">
-                        TALK TO AN EXPERT
-                    </button>
+                    <Link to={'/ai-consultant'}>
+                        <button className="bg-[#25434E] hover:cursor-pointer text-white px-5 py-3 rounded-md font-semibold shadow-md transition duration-300 hover:bg-[#1b353d] hover:scale-105">
+                            START SELF-ASSESSMENT
+                        </button>
+                    </Link>
 
-                    <button className="bg-[#25434E] hover:cursor-pointer text-white px-5 py-3 rounded-md font-semibold shadow-md transition duration-300 hover:bg-[#1b353d] hover:scale-105">
-                        EXPLORE TREATMENT PLANS
-                    </button>
+
+                    <Link to={'/talktoexpert'}>
+                        <button className="border-2 hover:cursor-pointer border-[#25434E] text-[#25434E] px-6 py-3 rounded-md font-semibold transition duration-300 hover:bg-[#25434E] hover:text-white hover:scale-105">
+                            TALK TO AN EXPERT
+                        </button>
+                    </Link>
+
+
+                    <Link to={'/treatmentplans'}>
+                        <button className="bg-[#25434E] hover:cursor-pointer text-white px-5 py-3 rounded-md font-semibold shadow-md transition duration-300 hover:bg-[#1b353d] hover:scale-105">
+                            EXPLORE TREATMENT PLANS
+                        </button>
+                    </Link>
+
+
                 </motion.div>
 
 

@@ -25,7 +25,8 @@ const HeroSection = () => {
 
 
     return (
-        <section className="w-full py-8 sm:py-14 px-2 md:px-16 lg:px-24 flex flex-col lg:flex-row items-center justify-between relative overflow-hidden">
+
+        <section className="w-full max-w-screen-2xl mx-auto py-8 sm:py-14 px-4 md:px-16 lg:px-24 flex flex-col lg:flex-row items-center justify-between relative overflow-hidden">
 
 
             {/* Background Text */}

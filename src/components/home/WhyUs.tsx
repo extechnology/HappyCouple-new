@@ -20,7 +20,7 @@ export default function WhyUs() {
         {
             icon: "/svgs/Contact-icon.svg",
             title: 'Personalised Treatment',
-            desc: 'Doctor consultation just at 469, fully refundable',
+            desc: 'Doctor consultation just at 300Rs, fully refundable',
             dark: true,
         },
         {

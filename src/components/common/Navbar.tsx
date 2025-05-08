@@ -11,12 +11,12 @@ const Navbar = () => {
 
   const location = useLocation(); // Get the current route
 
-  
+
   // Menu Items
   const menuItems = [
     { label: "Home", href: "/" },
     { label: "AI Consultant", href: "/ai-consultant" },
-    { label: "Talk to Doctor", href: "/talktodoctor" },
+    { label: "Explore Treatments", href: "/treatmentplans" },
     { label: "About Us", href: "/aboutus" },
   ];
 
@@ -73,9 +73,11 @@ const Navbar = () => {
 
           {/* Mobile CTA Button Inside Dropdown */}
           <div className="block md:hidden px-4 pb-2">
-            <Button className="w-full mt-2 text-black font-semibold text-lg bg-[#A7E8E0] hover:bg-[#8CD8D0] px-4 py-3 rounded-[12px] transition-transform hover:scale-105">
-              BOOK CONSULTATION
-            </Button>
+            <Link to={'/talktodoctor'}>
+              <Button className="w-full mt-2 text-black hover:cursor-pointer font-semibold text-lg bg-[#A7E8E0] hover:bg-[#8CD8D0] px-4 py-3 rounded-[12px] transition-transform hover:scale-105">
+                BOOK CONSULTATION
+              </Button>
+            </Link>
           </div>
 
 
@@ -84,7 +86,7 @@ const Navbar = () => {
 
         {/* Desktop CTA Button */}
         <div className="hidden md:block">
-          <Link to={'/consultation'}>
+          <Link to={'/talktodoctor'}>
             <Button className="bg-[#A7E8E0] hover:bg-[#8CD8D0] hover:cursor-pointer text-black font-semibold text-[14px] sm:text-[16px] px-5 py-6 rounded-[12px] transition-transform hover:scale-105">
               BOOK CONSULTATION
             </Button>

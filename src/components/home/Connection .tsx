@@ -68,7 +68,7 @@ export default function Connection() {
                     <div className="bg-[#25434E] text-white rounded-xl p-8 shadow-md flex flex-col items-center transform transition-transform duration-300 hover:scale-105 hover:shadow-lg">
                         <FileText className="h-6 w-6 mb-4" />
                         <p className="mb-4 text-white">Book Consultation</p>
-                        <Link to="/consultation">
+                        <Link to="/talktodoctor">
                             <button className="bg-white hover:cursor-pointer text-[#1f3f45] font-semibold px-5 py-2 rounded shadow transition-transform transform hover:scale-105 hover:shadow-md">
                                 Book Consultation
                             </button>

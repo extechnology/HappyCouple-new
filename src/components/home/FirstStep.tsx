@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 
 export default function FirstStep() {
@@ -70,11 +71,12 @@ export default function FirstStep() {
                             Start your journey towards better health and wellness
                         </p>
 
-
-                        <button className="mt-4 cursor-pointer inline-flex items-center justify-center px-6 py-3 bg-white text-black text-sm font-semibold rounded-md shadow-md hover:bg-gray-100 hover:shadow-lg transition-all duration-300 transform hover:scale-105 group">
-                            Schedule a consultation
-                            <span className="ml-2 transform transition-transform duration-300 group-hover:translate-x-1">&rarr;</span>
-                        </button>
+                        <Link to={'/talktodoctor'}>
+                            <button className="mt-4 cursor-pointer inline-flex items-center justify-center px-6 py-3 bg-white text-black text-sm font-semibold rounded-md shadow-md hover:bg-gray-100 hover:shadow-lg transition-all duration-300 transform hover:scale-105 group">
+                                Schedule a consultation
+                                <span className="ml-2 transform transition-transform duration-300 group-hover:translate-x-1">&rarr;</span>
+                            </button>
+                        </Link>
 
                     </div>
 

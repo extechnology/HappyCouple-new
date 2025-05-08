@@ -21,7 +21,7 @@ export default function FrequentlyAsked() {
                 "Yes, We follow the globally recognised European Association of Urology (EAU) guidelines.",
         },
         {
-            question: "Is the ₹69 consultation Refunded?",
+            question: "Is the ₹300 consultation Refunded?",
             answer: "Yes, fully refunded when you begin any treatment.",
         },
         {

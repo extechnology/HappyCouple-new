@@ -75,7 +75,7 @@ export default function AboutUs() {
 
                     <div className="flex justify-center mb-10">
                         <img
-                            src="https://media.istockphoto.com/id/1450789095/photo/confident-young-businessman-standing-in-office-lobby.jpg?s=612x612&w=0&k=20&c=fVowYhOy7YDe4NtmdWNLz71zkxFndJjTXYgs5MeEHWY="
+                            src="/About-Image.jpg"
                             alt="Founders"
                             loading="lazy"
                             className="rounded-md w-full max-w-sm h-96 object-cover shadow-md"

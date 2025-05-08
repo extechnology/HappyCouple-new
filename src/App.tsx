@@ -2,7 +2,7 @@ import { Suspense, lazy } from "react"
 import { Routes, Route } from "react-router-dom"
 import ScrollToTop from "./components/common/ScrollToTop.tsx"
 import MainLoader from "./components/common/MainLoader.tsx"
-
+import { Toaster } from 'sonner';
 
 
 
@@ -11,7 +11,6 @@ const MainLayout = lazy(() => import('./components/layout/MainLayout.tsx'))
 const AuthLayout = lazy(() => import('./components/layout/AuthLayout.tsx'))
 const Landing = lazy(() => import('./pages/Landing.tsx'))
 const TreatmentPlan = lazy(() => import('./pages/TreatmentPlan.tsx'))
-const Consultation = lazy(() => import('./pages/Consultation.tsx'))
 const TalkToDoctor = lazy(() => import('./pages/TalkToDoctor.tsx'))
 const TalkToExpert = lazy(() => import('./pages/TalkToExpert.tsx'))
 const ProductDetail = lazy(() => import('./pages/ProductDetail.tsx'))
@@ -45,8 +44,6 @@ function App() {
 
             <Route path="/treatmentplans" element={<TreatmentPlan />} />
 
-            <Route path="/consultation" element={<Consultation />} />
-
             <Route path="/talktoexpert" element={<TalkToExpert />} />
 
             <Route path="/talktodoctor" element={<TalkToDoctor />} />
@@ -79,6 +76,7 @@ function App() {
       </Suspense >
 
 
+      <Toaster />
 
     </>
 

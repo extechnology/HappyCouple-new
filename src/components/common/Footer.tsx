@@ -10,7 +10,7 @@ export default function Footer() {
     <footer className="bg-[#25434E] text-white text-sm py-10">
 
 
-      <div className="mx-auto px-6 md:px-14">
+      <div className="mx-auto px-4 md:px-14">
 
         {/* Top Section */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
@@ -55,7 +55,7 @@ export default function Footer() {
             </div>
 
             <div className="space-y-2">
-              <Link to={"/consultation"} className="block hover:underline">Book Consultation</Link>
+              <Link to={"/talktodoctor"} className="block hover:underline">Book Consultation</Link>
               <Link to={"/talktoexpert"} className="block hover:underline">Talk To Expert</Link>
               <Link to={"/auth"} className="block hover:underline">Login/Signup</Link>
               <Link to={"/"} className="block hover:underline">My Orders</Link>
@@ -80,6 +80,7 @@ export default function Footer() {
 
         {/* Bottom Section */}
         <div className="mt-10 pt-6 border-t border-gray-500 flex flex-col gap-6 md:flex-row md:justify-between md:items-center">
+          
           <p className="text-center md:text-left">
             © 2025 Happy Couple Solutions. All rights reserved.
           </p>
@@ -99,6 +100,7 @@ export default function Footer() {
             <a href="#" className="hover:text-gray-300"><i className="fab fa-youtube fa-lg"></i></a>
             <a href="#" className="hover:text-gray-300"><i className="fa-brands fa-pinterest fa-lg"></i></a>
           </div>
+          
         </div>
 
 

@@ -1,16 +1,32 @@
+import { Link } from "react-router-dom";
+
+
+
+
+// Define TypeScript interface 
+interface StepType {
+
+    id: number,
+    title: string,
+    description: string,
+    button: string,
+    herf: string,
+    image: string,
+}
 
 
 export default function HowWorks() {
 
 
 
-    const steps = [
+    const steps : StepType[] = [
         {
             id: 1,
             title: "START WITH A SELF ASSESSMENT",
             description:
                 "Take our AI-powered assessment based on global sexual wellness protocols to understand your current status.",
             button: "Get Started",
+            herf: "/assessment",
             image: "https://media.istockphoto.com/id/1400690125/photo/happy-and-loving-mature-caucasian-couple-enjoying-a-romantic-date-at-the-beach-together-on-a.jpg?s=612x612&w=0&k=20&c=dLsRK3CK98o5Fg5qvaYqxozTToWES_lBUMlZtdZ5T1Y=", // Replace with actual image path
         },
         {
@@ -19,6 +35,7 @@ export default function HowWorks() {
             description:
                 "Get professional, non-judgemental guidance tailored to your assessment score and lifestyle.",
             button: "Get Started",
+            herf: "/talktoexpert",
             image: "https://media.istockphoto.com/id/1470845982/photo/love-diversity-and-couple-hug-on-vacation-holiday-or-summer-trip-romantic-relax-smile-and.jpg?s=612x612&w=0&k=20&c=oVWd-IeMGfL4ToE0MCpbRdHPS9lnZFSfkXoq1JGuLEU=",
         },
         {
@@ -27,6 +44,7 @@ export default function HowWorks() {
             description:
                 "If further evaluation needed, consult with our sexual health expert. The ₹300 is fully refunded when you begin treatment.",
             button: "Get Started",
+            herf: "/talktodoctor",
             image: "https://media.istockphoto.com/id/1368004438/photo/shot-of-a-couple-enjoying-a-day-at-the-beach.jpg?s=612x612&w=0&k=20&c=hMi6N-u6baFHC-P8C-8X_5iFshdPPicx7BCrBGM8ARc=",
         },
         {
@@ -35,6 +53,7 @@ export default function HowWorks() {
             description:
                 "Start with the right scientifically approved therapy for you—nutraceuticals, vacuum devices, or medications—as per EAU guidelines.",
             button: "Get Started",
+            herf: "/treatmentplans",
             image: "https://t4.ftcdn.net/jpg/02/77/68/51/360_F_277685185_UAYxm224UPelni1rxsuAUZQbfhly0RpL.jpg",
         },
     ];
@@ -78,7 +97,7 @@ export default function HowWorks() {
                 {/* Steps */}
                 <div className="grid md:grid-cols-2 gap-8 sm:gap-10 max-w-7xl mx-auto">
 
-                    {steps.map((step) => (
+                    {steps?.map((step : StepType) => (
 
                         <div
                             key={step.id}
@@ -120,10 +139,12 @@ export default function HowWorks() {
 
                                 <div className="text-center">
 
-                                    <button className="mt-6 px-6 py-2 hover:cursor-pointer bg-white text-black text-sm font-semibold rounded-full shadow-md transition-all duration-300 transform hover:bg-gray-100 hover:scale-105 hover:shadow-lg group">
-                                        {step.button}
-                                        <span className="ml-1 inline-block transition-transform duration-300 group-hover:translate-x-1">⟶</span>
-                                    </button>
+                                    <Link to={step.herf}>
+                                        <button className="mt-6 px-6 py-2 hover:cursor-pointer bg-white text-black text-sm font-semibold rounded-full shadow-md transition-all duration-300 transform hover:bg-gray-100 hover:scale-105 hover:shadow-lg group">
+                                            {step.button}
+                                            <span className="ml-1 inline-block transition-transform duration-300 group-hover:translate-x-1">⟶</span>
+                                        </button>
+                                    </Link>
 
                                 </div>
 

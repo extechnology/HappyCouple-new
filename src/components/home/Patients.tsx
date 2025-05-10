@@ -19,8 +19,7 @@ export default function Patients() {
                 "I didn’t want to take pills blindly. Their step-by-step approach helped me find a safe, effective solution",
             name: "Ajaya.M",
             age: "41 years old",
-            image:
-                "https://d2v5dzhdg4zhx3.cloudfront.net/web-assets/images/storypages/short/linkedin-profile-picture-maker/dummy_image/thumb/004.webp",
+            image:"/doc.png",
         },
     ];
 

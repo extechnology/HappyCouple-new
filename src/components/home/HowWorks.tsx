@@ -27,7 +27,7 @@ export default function HowWorks() {
                 "Take our AI-powered assessment based on global sexual wellness protocols to understand your current status.",
             button: "Get Started",
             herf: "/assessment",
-            image: "https://media.istockphoto.com/id/1400690125/photo/happy-and-loving-mature-caucasian-couple-enjoying-a-romantic-date-at-the-beach-together-on-a.jpg?s=612x612&w=0&k=20&c=dLsRK3CK98o5Fg5qvaYqxozTToWES_lBUMlZtdZ5T1Y=", // Replace with actual image path
+            image: "/Aessment-image.jpg",
         },
         {
             id: 2,
@@ -36,7 +36,7 @@ export default function HowWorks() {
                 "Get professional, non-judgemental guidance tailored to your assessment score and lifestyle.",
             button: "Get Started",
             herf: "/talktoexpert",
-            image: "https://media.istockphoto.com/id/1470845982/photo/love-diversity-and-couple-hug-on-vacation-holiday-or-summer-trip-romantic-relax-smile-and.jpg?s=612x612&w=0&k=20&c=oVWd-IeMGfL4ToE0MCpbRdHPS9lnZFSfkXoq1JGuLEU=",
+            image: "/talktoexpert-image.jpg",
         },
         {
             id: 3,
@@ -45,7 +45,7 @@ export default function HowWorks() {
                 "If further evaluation needed, consult with our sexual health expert. The ₹300 is fully refunded when you begin treatment.",
             button: "Get Started",
             herf: "/talktodoctor",
-            image: "https://media.istockphoto.com/id/1368004438/photo/shot-of-a-couple-enjoying-a-day-at-the-beach.jpg?s=612x612&w=0&k=20&c=hMi6N-u6baFHC-P8C-8X_5iFshdPPicx7BCrBGM8ARc=",
+            image: "/Book-consultaion-image.jpg",
         },
         {
             id: 4,
@@ -54,7 +54,7 @@ export default function HowWorks() {
                 "Start with the right scientifically approved therapy for you—nutraceuticals, vacuum devices, or medications—as per EAU guidelines.",
             button: "Get Started",
             herf: "/treatmentplans",
-            image: "https://t4.ftcdn.net/jpg/02/77/68/51/360_F_277685185_UAYxm224UPelni1rxsuAUZQbfhly0RpL.jpg",
+            image: "/Treatment-image.jpg",
         },
     ];
 

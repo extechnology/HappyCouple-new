@@ -107,7 +107,7 @@ const HeroSection = () => {
 
 
                 {/* Bottom Right Dot Grid */}
-                <div className="absolute bottom-[-40px] right-[-85px] w-64 h-64 rounded-full overflow-hidden -z-1 text-[#25434E]">
+                <div className="absolute bottom-[-40px] right-[-50px] w-64 h-64 rounded-full overflow-hidden -z-1 text-[#25434E]">
 
                     <svg id="patternId" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
                         <defs>
@@ -150,17 +150,19 @@ const HeroSection = () => {
                 <h1 className="text-3xl md:text-6xl font-bold text-[#1B1B1B] leading-snug sm:block hidden">
 
                     <BoxReveal boxColor={"#25434E"} duration={0.6}>
-                        <span className="relative inline-block">
-                            <span className="relative inline-block z-10">S</span>
-                            <img
-                                src="/svgs/hero-text.svg"
-                                alt="svg-logo"
-                                loading="lazy"
-                                className="absolute -top-0 -left-2 w-6 h-6 z-20 ponin"
-                            />
-                        </span>
+                        <div>
+                            <span className="relative inline-block">
+                                <span className="relative inline-block z-10">S</span>
+                                <img
+                                    src="/svgs/hero-text.svg"
+                                    alt="svg-logo"
+                                    loading="lazy"
+                                    className="absolute -top-10 -left-2 w-24 h-24 z-20 ponin"
+                                />
+                            </span>
 
-                        cientifically Guided.<br />
+                            cientifically Guided.<br />
+                        </div>
                     </BoxReveal>
 
                     <BoxReveal boxColor={"#25434E"} duration={0.6}>
@@ -171,19 +173,21 @@ const HeroSection = () => {
 
 
                     <BoxReveal boxColor={"#25434E"} duration={0.6}>
+                        <div className="pb-5">
 
-                        Personally{" "}
+                            Personally{" "}
 
-                        <span className="relative inline-block text-[#204D5B]">
-                            Tailored.
-                            <img
-                                src="/svgs/hero-text-underline.svg"
-                                alt="svg-logo"
-                                loading="lazy"
-                                className="absolute -bottom-2 left-0 w-full pointer-events-none"
-                            />
-                        </span>
+                            <span className="relative inline-block text-[#204D5B]">
+                                Tailored.
+                                <img
+                                    src="/svgs/hero-text-underline.svg"
+                                    alt="svg-logo"
+                                    loading="lazy"
+                                    className="absolute -bottom-4 left-0 w-full pointer-events-none"
+                                />
+                            </span>
 
+                        </div>
                     </BoxReveal>
 
                 </h1>
@@ -192,7 +196,7 @@ const HeroSection = () => {
 
                 {/* Buttons */}
                 <motion.div
-                    className="mt-8 flex flex-col sm:flex-row sm:items-center sm:space-x-4 space-y-4 sm:space-y-0"
+                    className="mt-5 flex flex-col sm:flex-row sm:items-center sm:space-x-4 space-y-4 sm:space-y-0"
                     initial="hidden"
                     animate="visible"
                     variants={buttonVariants}

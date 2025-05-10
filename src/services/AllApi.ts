@@ -1,7 +1,7 @@
 import { CommonApi } from "./CommonApi";
 
 
-const Base_Url = "http://localhost:8000"
+const Base_Url = "https://server.happycouplesolutions.com"
 
 
 

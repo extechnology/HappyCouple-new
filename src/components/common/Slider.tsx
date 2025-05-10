@@ -1,31 +1,45 @@
 import { useEffect, useState } from "react";
 import { Carousel, CarouselContent, CarouselItem } from "../ui/carousel";
 import { motion, AnimatePresence } from "framer-motion";
-
-
-
-// Slider images 
-const heroImages = [
-    "/hero-image.jpeg",
-    "https://media.istockphoto.com/id/518730373/photo/romantic-couple-enjoying-the-sunset-on-paris.jpg?s=612x612&w=0&k=20&c=LDBOVVJyZd_CaWxprENcLQwOvIerNP05Yn_vU7Dvvuc=",
-];
+import { useGetHomeSlider } from "@/services/utils/queries";
 
 
 
 export default function Slider() {
 
 
+
     const [currentSlide, setCurrentSlide] = useState(0);
     const [direction, setDirection] = useState(1);
 
 
+    // Get Home Slider Data
+    const { data, isLoading, isFetching, isError } = useGetHomeSlider()
+
+
+
     useEffect(() => {
+
+        if (!data || data.length <= 1) return;
+
         const interval = setInterval(() => {
             setDirection(1);
-            setCurrentSlide((prev) => (prev + 1) % heroImages.length);
+            setCurrentSlide((prev) => (prev + 1) % data.length);
         }, 5000);
+
         return () => clearInterval(interval);
-    }, []);
+
+    }, [data]);
+
+
+
+
+    // Handle Loading and error
+    if (isLoading || isFetching || isError) return (
+        <div className="w-full h-full">
+            <div className="w-full aspect-square bg-gray-200 rounded-[20px] animate-pulse" />
+        </div>
+    )
 
 
 
@@ -42,8 +56,8 @@ export default function Slider() {
 
                         <CarouselItem key={currentSlide} className="w-full h-full">
                             <motion.img
-                                key={heroImages[currentSlide]}
-                                src={heroImages[currentSlide]}
+                                key={data[currentSlide]}
+                                src={data[currentSlide]}
                                 alt={`Slide ${currentSlide + 1}`}
                                 className="w-full h-full object-cover rounded-[20px]"
                                 custom={direction}

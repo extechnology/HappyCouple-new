@@ -105,7 +105,10 @@ export default function DocForm() {
                     <label className="block text-left text-[#145566] mb-1">Health Concern (Optional, Helps Us Assign the Right Doctor)</label>
                     <select className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#145566]">
                         <option>Erectile dysfunction</option>
-                        {/* More concerns can be added here */}
+                        <option> Low libido</option>
+                        <option>Relationship support</option>
+                        <option>Others</option>
+                        
                     </select>
                 </div>
 

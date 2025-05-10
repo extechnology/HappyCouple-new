@@ -1,15 +1,35 @@
-import {
-    Tabs,
-    TabsContent,
-    TabsList,
-    TabsTrigger,
-} from "@/components/ui/tabs"
-import { Link } from "react-router-dom"
-
+import { Tabs, TabsContent, TabsList, TabsTrigger, } from "@/components/ui/tabs"
+import { useGetSingleProducts } from "@/services/products/queries"
+import { useParams } from "react-router-dom"
+import ServerError from "@/components/common/Error"
+import { DetailSkelton } from "@/components/Loaders/DetailSkelton"
+import DetailCard from "@/components/productDetail/DetailCard"
+import RelatedProducts from "@/components/productDetail/RelatedProducts"
 
 
 
 export default function ProductDetail() {
+
+
+
+    // Get the product id form the params
+    const { id } = useParams()
+
+
+
+    // Get Single Product Data
+    const { data: ProductData, isLoading, isFetching, isError } = useGetSingleProducts(id as string)
+
+
+
+    // Handle Loading
+    if (isLoading || isFetching) return <DetailSkelton />
+
+
+
+    // Handle Error
+    if (isError) return <ServerError />
+
 
 
     return (
@@ -18,80 +38,24 @@ export default function ProductDetail() {
 
         <main className="bg-white">
 
+
             <div className="max-w-7xl mx-auto px-4 pt-5 sm:pt-16 pb-20">
 
 
-
                 {/* Product Details */}
-                <section className="grid grid-cols-1 md:grid-cols-2 gap-8">
-
-
-
-                    {/* Left - Image */}
-                    <div className="flex justify-center">
-                        <img
-                            src="/Lygin.png"
-                            alt="LyGin M"
-                            loading="lazy"
-                            className="rounded-md object-contain"
-                        />
-                    </div>
-
-
-
-                    {/* Right - Details */}
-                    <div>
-
-
-                        {/* title */}
-                        <h2 className="text-2xl font-semibold text-gray-900 leading-snug">
-                            VitalCore Solution – Nutraceutical Therapy (₹1470 for 1-Month Supply)
-                        </h2>
-
-
-
-                        {/* Rating & Price */}
-                        <div className="text-xl text-yellow-600 mt-1">★★★★☆ 4.5</div>
-                        <p className="text-green-600 font-bold text-xl mt-2">₹ 1470</p>
-
-
-
-                        {/* Discription */}
-                        <div className="mt-3 text-md text-gray-700 text-justify">
-
-                            <p><strong>For Concerned of :</strong></p>
-
-                            <p>
-                                Scientifically formulated nutraceutical support (LyGin-M). Supports hormonal balance,
-                                energy levels, and overall vitality. Natural, safe, and effective for improving physical well-being in relationships.
-                            </p>
-
-                            <p className="mt-4"><strong>Description :</strong></p>
-
-                            <p>
-                                Those experiencing low energy, stress-related fatigue, or mild performance issues.
-                                Couples looking for a holistic, non-invasive approach to wellness.
-                            </p>
-
-                        </div>
-
-                        <Link to={'/checkout'}>
-                            <button className="mt-5 px-16 py-2 font-semibold border-2 hover:cursor-pointer border-[#25758A] text-[#25758A] rounded hover:bg-teal-50 transition">
-                                BUY NOW
-                            </button>
-                        </Link>
-
-
-                    </div>
-
-
-                </section>
-
+                <DetailCard
+                    image={ProductData?.image}
+                    price={ProductData?.price}
+                    rating={ProductData?.rating}
+                    title={ProductData?.name}
+                    description={ProductData?.description}
+                    concerned={ProductData?.concern}
+                />
 
 
 
                 {/* Tabs Section */}
-                <section className="mt-12">
+                <section className="mt-12 border-b border-gray-200/90 pb-8">
 
 
                     <Tabs defaultValue="benefits" className="w-full">
@@ -105,30 +69,70 @@ export default function ProductDetail() {
                         </TabsList>
 
 
+
+                        {/* Benfits */}
                         <TabsContent value="benefits" className="mt-[15rem] sm:mt-10 text-gray-800 space-y-2 list-disc list-inside">
                             <ul className="space-y-6 pl-4 list-disc">
-                                <li><strong>Enhanced Stamina:</strong> Boosts energy and endurance for improved performance.</li>
-                                <li><strong>Hormonal Balance:</strong> Supports healthy testosterone levels for optimal vitality.</li>
-                                <li><strong>Improved Blood Flow:</strong> Promotes better circulation for enhanced arousal and function.</li>
-                                <li><strong>Stress Reduction:</strong> Helps manage stress, improving overall sexual well-being.</li>
-                                <li><strong>Holistic Support:</strong> Combines natural ingredients like LyGin M for overall physical and performance health.</li>
+                                {ProductData?.benefits?.map((benefit: { id: number, benefit: string }) => {
+                                    // Split the benefit string into two parts: before and after the colon
+                                    const [title, description] = benefit?.benefit?.split(':');
+
+                                    return (
+                                        <li key={benefit?.id}>
+                                            <strong>{title}:</strong> {description}
+                                        </li>
+                                    );
+                                })}
                             </ul>
                         </TabsContent>
 
 
+
+                        {/* How to use */}
                         <TabsContent value="how" className="mt-[15rem] sm:mt-10">
-                            <p>Take 1 capsule daily after breakfast or as prescribed by your doctor. Do not exceed the recommended dosage.</p>
+                            <ul className="space-y-6 pl-4 list-disc">
+                                {ProductData?.how_to_use?.map((how: { id: number, how_to_use: string }) => {
+                                    // Split the benefit string into two parts: before and after the colon
+                                    const [title, description] = how?.how_to_use?.split(':');
+
+                                    return (
+                                        <li key={how?.id}>
+                                            <strong>{title}:</strong> {description}
+                                        </li>
+                                    );
+                                })}
+                            </ul>
                         </TabsContent>
 
 
+
+                        {/* Reviews */}
                         <TabsContent value="reviews" className="mt-[15rem] sm:mt-10">
-                            <p>⭐️⭐️⭐️⭐️⭐️ - "Really effective, noticed improvement in energy within a week!"</p>
+                            <ul className="space-y-6 pl-4 list-disc">
+                                {ProductData?.reviews?.map((review: { id: number, review: string, rating: number }) => {
+                                    const stars = "★".repeat(review?.rating)
+
+                                    return (
+                                        <li key={review.id} className="text-gray-800">
+                                            <span className="font-semibold text-yellow-500 text-lg">{stars} - </span>
+                                            <span className="italic">"{review?.review}"</span>
+                                        </li>
+                                    );
+                                })}
+                            </ul>
                         </TabsContent>
 
 
+                        {/* Faqs */}
                         <TabsContent value="faqs" className="mt-[15rem] sm:mt-10">
-                            <p><strong>Q:</strong> Is it safe for long-term use?</p>
-                            <p><strong>A:</strong> Yes, it's formulated with natural ingredients and safe for long-term use. Consult a physician for personalized advice.</p>
+                            {ProductData?.faq?.map((item: { id: number, question: string, answer: string }) => {
+                                return (
+                                    <div key={item?.id} className="mb-6">
+                                        <p className="font-semibold text-gray-900"><strong>Q:</strong> {item?.question}</p>
+                                        <p className="text-gray-700"><strong>A:</strong> {item?.answer}</p>
+                                    </div>
+                                );
+                            })}
                         </TabsContent>
 
 
@@ -136,6 +140,10 @@ export default function ProductDetail() {
 
 
                 </section>
+
+
+                {/* Related Products */}
+                <RelatedProducts />
 
 
             </div>

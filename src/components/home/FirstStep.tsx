@@ -33,7 +33,7 @@ export default function FirstStep() {
 
                             <div className="w-52 h-60 rounded-lg overflow-hidden shadow-lg absolute z-30 top-0 right-1/2 sm:translate-x-1/12 translate-x-1/6  -translate-y-1/2">
                                 <img
-                                    src="https://media.istockphoto.com/id/1446035173/photo/love-happy-and-couple-piggy-back-on-road-path-in-arizona-desert-in-usa-for-romantic-getaway.jpg?s=612x612&w=0&k=20&c=6FWDev2sf_NmftDx4qJbRJImHiZSQsq9HtQcu6uKW9E="
+                                    src="/first-step-2.jpg"
                                     alt="Happy Couple"
                                     loading="lazy"
                                     className="w-full h-full object-cover"
@@ -43,7 +43,7 @@ export default function FirstStep() {
 
                             <div className="w-full h-80 rounded-lg overflow-hidden shadow-lg z-10 relative">
                                 <img
-                                    src="https://media.istockphoto.com/id/1168107752/photo/he-tells-me-exactly-what-i-want-to-hear.jpg?s=612x612&w=0&k=20&c=I3j3KNnJQWHgFFPChlqyY-w8K2n3iHjIbThBnizGGmM="
+                                    src="/first-step-1.jpg"
                                     alt="Consultation"
                                     loading="lazy"
                                     className="w-full h-full object-cover"

@@ -29,18 +29,6 @@ const HeroSection = () => {
         <section className="w-full max-w-screen-2xl mx-auto py-3 sm:py-14 px-4 md:px-14 lg:px-5 xl:px-24 flex flex-col lg:flex-row items-center justify-between relative overflow-hidden">
 
 
-            {/* Background Text */}
-            <motion.div
-                className="absolute text-[8rem] font-bold bg-gradient-to-b from-[#A7E8E0] to-[#E9F4F5] bg-clip-text text-transparent opacity-70 top-0 left-0 leading-none z-0 select-none hidden lg:block"
-                initial="hidden"
-                animate="visible"
-                variants={textVariants}
-            >
-                <div>HAPPY</div>
-                <div>COUPLES</div>
-            </motion.div>
-
-
 
             {/* Heading Mobile */}
             <motion.h1
@@ -225,17 +213,6 @@ const HeroSection = () => {
 
             </motion.div>
 
-
-            {/* Background Text */}
-            <motion.div
-                className="absolute -bottom-14 -right-96 text-[8rem] font-bold bg-gradient-to-b from-[#A7E8E0] to-[#E9F4F5] bg-clip-text text-transparent opacity-70 leading-none z-0 select-none hidden lg:block"
-                initial="hidden"
-                animate="visible"
-                variants={textVariants}
-            >
-                <div>HAPPY</div>
-                <div>COUPLES</div>
-            </motion.div>
 
         </section >
     );

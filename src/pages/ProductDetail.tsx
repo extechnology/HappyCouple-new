@@ -62,10 +62,10 @@ export default function ProductDetail() {
 
 
                         <TabsList className="flex flex-wrap gap-4 bg-transparent p-2 rounded-md justify-center">
-                            <TabsTrigger value="benefits" className="px-10 py-6 bg-[#F2F4F7] data-[state=active]:bg-teal-700 data-[state=active]:text-white font-semibold hover:cursor-pointer">KEY BENEFITS</TabsTrigger>
-                            <TabsTrigger value="how" className="px-10 py-6 bg-[#F2F4F7] data-[state=active]:bg-teal-700 data-[state=active]:text-white font-semibold hover:cursor-pointer">HOW TO USE</TabsTrigger>
-                            <TabsTrigger value="reviews" className="px-10 py-6 bg-[#F2F4F7] data-[state=active]:bg-teal-700 data-[state=active]:text-white font-semibold hover:cursor-pointer">CUSTOMER REVIEWS</TabsTrigger>
-                            <TabsTrigger value="faqs" className="px-10 py-6 bg-[#F2F4F7] data-[state=active]:bg-teal-700 data-[state=active]:text-white font-semibold hover:cursor-pointer">FAQS</TabsTrigger>
+                            <TabsTrigger value="benefits" className="px-10 py-6 bg-[#F2F4F7] data-[state=active]:bg-[#145566] data-[state=active]:text-white font-semibold hover:cursor-pointer">KEY BENEFITS</TabsTrigger>
+                            <TabsTrigger value="how" className="px-10 py-6 bg-[#F2F4F7] data-[state=active]:bg-[#145566] data-[state=active]:text-white font-semibold hover:cursor-pointer">HOW TO USE</TabsTrigger>
+                            <TabsTrigger value="reviews" className="px-10 py-6 bg-[#F2F4F7] data-[state=active]:bg-[#145566] data-[state=active]:text-white font-semibold hover:cursor-pointer">CUSTOMER REVIEWS</TabsTrigger>
+                            <TabsTrigger value="faqs" className="px-10 py-6 bg-[#F2F4F7] data-[state=active]:bg-[#145566] data-[state=active]:text-white font-semibold hover:cursor-pointer">FAQS</TabsTrigger>
                         </TabsList>
 
 
@@ -127,8 +127,8 @@ export default function ProductDetail() {
                         <TabsContent value="faqs" className="mt-[15rem] sm:mt-10">
                             {ProductData?.faq?.map((item: { id: number, question: string, answer: string }) => {
                                 return (
-                                    <div key={item?.id} className="mb-6">
-                                        <p className="font-semibold text-gray-900"><strong>Q:</strong> {item?.question}</p>
+                                    <div key={item?.id} className="mb-6 p-2">
+                                        <p className="font-semibold text-gray-900 mb-2"><strong>Q:</strong> {item?.question} ?</p>
                                         <p className="text-gray-700"><strong>A:</strong> {item?.answer}</p>
                                     </div>
                                 );

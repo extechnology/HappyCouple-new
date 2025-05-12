@@ -26,7 +26,7 @@ const HeroSection = () => {
 
     return (
 
-        <section className="w-full max-w-screen-2xl mx-auto py-8 sm:py-14 px-4 md:px-16 lg:px-24 flex flex-col lg:flex-row items-center justify-between relative overflow-hidden">
+        <section className="w-full max-w-screen-2xl mx-auto py-3 sm:py-14 px-4 md:px-16 lg:px-24 flex flex-col lg:flex-row items-center justify-between relative overflow-hidden">
 
 
             {/* Background Text */}
@@ -94,7 +94,7 @@ const HeroSection = () => {
 
 
             {/* Image */}
-            <div className="relative z-20 rounded-[20px] w-full max-w-md">
+            <div className="relative z-20 rounded-[20px] w-full max-w-xl">
 
 
                 <Slider />
@@ -107,7 +107,7 @@ const HeroSection = () => {
 
 
                 {/* Bottom Right Dot Grid */}
-                <div className="absolute bottom-[-40px] right-[-50px] w-64 h-64 rounded-full overflow-hidden -z-1 text-[#25434E]">
+                <div className="absolute bottom-[-40px] right-[-45px] w-64 h-64 rounded-full overflow-hidden -z-1 text-[#25434E]">
 
                     <svg id="patternId" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
                         <defs>
@@ -196,28 +196,25 @@ const HeroSection = () => {
 
                 {/* Buttons */}
                 <motion.div
-                    className="mt-5 flex flex-col sm:flex-row sm:items-center sm:space-x-4 space-y-4 sm:space-y-0"
+                    className="mt-5 flex flex-col sm:flex-col sm:items-center sm:space-x-4 space-y-4 sm:space-y-4"
                     initial="hidden"
                     animate="visible"
                     variants={buttonVariants}
                 >
-
                     <Link to={'/ai-consultant'}>
-                        <button className="bg-[#25434E] hover:cursor-pointer text-white px-5 py-3 rounded-md font-semibold shadow-md transition duration-300 hover:bg-[#1b353d] hover:scale-105">
+                        <button className="w-72 bg-[#25434E] hover:cursor-pointer text-white px-5 py-3 rounded-md font-semibold shadow-md transition duration-300 hover:bg-[#1b353d] hover:scale-105">
                             START SELF-ASSESSMENT
                         </button>
                     </Link>
 
-
                     <Link to={'/talktoexpert'}>
-                        <button className="border-2 hover:cursor-pointer border-[#25434E] text-[#25434E] px-6 py-3 rounded-md font-semibold transition duration-300 hover:bg-[#25434E] hover:text-white hover:scale-105">
+                        <button className="w-72 border-2 hover:cursor-pointer border-[#25434E] text-[#25434E] px-5 py-3 rounded-md font-semibold transition duration-300 hover:bg-[#25434E] hover:text-white hover:scale-105">
                             TALK TO AN EXPERT
                         </button>
                     </Link>
 
-
                     <Link to={'/treatmentplans'}>
-                        <button className="bg-[#25434E] hover:cursor-pointer text-white px-5 py-3 rounded-md font-semibold shadow-md transition duration-300 hover:bg-[#1b353d] hover:scale-105">
+                        <button className="w-72 bg-[#25434E] hover:cursor-pointer text-white px-5 py-3 rounded-md font-semibold shadow-md transition duration-300 hover:bg-[#1b353d] hover:scale-105">
                             EXPLORE TREATMENT PLANS
                         </button>
                     </Link>

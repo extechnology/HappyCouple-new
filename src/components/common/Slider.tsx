@@ -59,7 +59,7 @@ export default function Slider() {
                                 key={data[currentSlide]}
                                 src={data[currentSlide]}
                                 alt={`Slide ${currentSlide + 1}`}
-                                className="w-full h-full object-cover rounded-[20px]"
+                                className="w-full h-[100vh] object-cover rounded-[20px]"
                                 custom={direction}
                                 initial={{ x: direction > 0 ? 300 : -300 }}
                                 animate={{ x: 0 }}

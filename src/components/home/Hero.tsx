@@ -26,7 +26,7 @@ const HeroSection = () => {
 
     return (
 
-        <section className="w-full max-w-screen-2xl mx-auto py-3 sm:py-14 px-4 md:px-16 lg:px-24 flex flex-col lg:flex-row items-center justify-between relative overflow-hidden">
+        <section className="w-full max-w-screen-2xl mx-auto py-3 sm:py-14 px-4 md:px-14 lg:px-5 xl:px-24 flex flex-col lg:flex-row items-center justify-between relative overflow-hidden">
 
 
             {/* Background Text */}
@@ -201,6 +201,7 @@ const HeroSection = () => {
                     animate="visible"
                     variants={buttonVariants}
                 >
+                    
                     <Link to={'/ai-consultant'}>
                         <button className="w-72 bg-[#25434E] hover:cursor-pointer text-white px-5 py-3 rounded-md font-semibold shadow-md transition duration-300 hover:bg-[#1b353d] hover:scale-105">
                             START SELF-ASSESSMENT
@@ -214,11 +215,10 @@ const HeroSection = () => {
                     </Link>
 
                     <Link to={'/treatmentplans'}>
-                        <button className="w-72 bg-[#25434E] hover:cursor-pointer text-white px-5 py-3 rounded-md font-semibold shadow-md transition duration-300 hover:bg-[#1b353d] hover:scale-105">
+                        <button className="w-72 bg-[#25434E] me-4 hover:cursor-pointer text-white px-5 py-3 rounded-md font-semibold shadow-md transition duration-300 hover:bg-[#1b353d] hover:scale-105">
                             EXPLORE TREATMENT PLANS
                         </button>
                     </Link>
-
 
                 </motion.div>
 

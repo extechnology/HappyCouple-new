@@ -44,7 +44,7 @@ const TalkToDoctor = () => {
 
                     <div className="text-center">
                         <h2 className="text-5xl font-serif text-gray-900">
-                            Our Medical <span className="text-teal-700 font-semibold">Experts</span>
+                            Our Medical <span className="text-[#145566] font-semibold">Experts</span>
                         </h2>
                         <p className="mt-4 text-xl text-gray-700">
                             Specialist Centre | General Physicians | Health Coaches
@@ -67,8 +67,9 @@ const TalkToDoctor = () => {
 
             </BlurFade>
 
-
         </main>
+
+
     );
 };
 

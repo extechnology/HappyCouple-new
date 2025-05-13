@@ -1,11 +1,23 @@
 import DocForm from "@/components/TalkToDoctor/DocForm";
 import DocCard from "@/components/TalkToDoctor/DocCard";
 import { BlurFade } from "@/components/magicui/blur-fade";
+import { useGetDoctors } from "@/services/Doctor/queries";
+import ServerError from "@/components/common/Error";
+import DocLoader from "@/components/Loaders/DocLoader";
+import { DoctorTypes } from "@/services/Doctor/types";
 
 
 
 const TalkToDoctor = () => {
 
+
+
+    // Get Doctors Data
+    const { data: doctors, isLoading, isFetching, isError } = useGetDoctors();
+
+
+    // Handle Error
+    if (isError) return <ServerError />
 
 
 
@@ -52,15 +64,26 @@ const TalkToDoctor = () => {
                     </div>
 
 
-                    {/* Doctors Cards */}
-                    <DocCard
-                        image="/doc.png"
-                        name="Dr. Ajayan Varughes"
-                        specialization="Sexual Medicine, Applied Psychology, Therapy, Sexual Dysfunction Treatment"
-                        qualification="M.B.B.S - Govt. Medical College Kozhikode Kerala, M.Sc. (Applied Psychology) - Bharathiar University"
-                        experience="25+ years"
-                        language="English |Hindi | Tamil | Malayalam"
-                    />
+                    {isLoading || isFetching ? (
+
+                        <DocLoader />
+
+                    ) : (
+                        
+                        doctors?.map((doctor : DoctorTypes) => (
+                            <DocCard
+                                key={doctor?.id}
+                                image={doctor?.image}
+                                name={doctor?.name}
+                                specialization={doctor?.description1}
+                                qualification={doctor?.description2}
+                                experience={doctor?.experience}
+                                language={doctor?.language}
+                                online = {doctor?.online}
+                            />
+                        ))
+
+                    )}
 
 
                 </section>

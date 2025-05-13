@@ -1,16 +1,19 @@
-import { LockKeyhole } from "lucide-react";
+import { LoaderCircle, LockKeyhole } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState, useEffect } from "react";
 import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
+import { useBookConsult } from "@/services/Doctor/mutations";
+import { toast } from "sonner";
 
 
 
 // Utils
 const today = new Date();
 const formatDate = (date: Date) => date.toISOString().split("T")[0];
+
 
 
 
@@ -47,13 +50,8 @@ const generateTimeSlots = (isToday: boolean) => {
 // Form Schema
 const formSchema = z.object({
     name: z.string().nonempty("Name is required"),
-    phone: z.string()
-        .nonempty("Phone number is required")
-        .transform(val => val.replace(/[^+\d]/g, ""))  // Clean input by removing non-numeric characters (except +)
-        .refine(val => /^\+\d{10,15}$/.test(val), {  // Validate that it follows the international format
-            message: "Enter a valid phone number",
-        }),
-    email: z.string().refine((value) => value === "" || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value), { message: "Please enter a valid email address", }).optional(),
+    phone: z.string().nonempty("Phone number is required").refine((value) => /^[0-9]{12}$/.test(value), { message: "Please enter a valid phone number", }),
+    email: z.string().email("Please enter a valid email address"),
     date: z.string().nonempty("Please select a date").refine((val) => {
         const selected = new Date(val);
         const minDate = new Date(formatDate(today));
@@ -100,6 +98,13 @@ export default function DocForm() {
 
 
 
+
+    // Book Consult
+    const { mutate: bookConsult, isPending } = useBookConsult();
+
+
+
+
     // Update time slots when date changes
     useEffect(() => {
         const selected = new Date(selectedDate);
@@ -111,9 +116,57 @@ export default function DocForm() {
 
 
 
-    // Form submit 
+
+    // Book Consult
     const onSubmit = (values: FormData) => {
-        console.log("Form Data =>", values);
+
+
+        const formdata = new FormData();
+
+
+        formdata.append("name", values.name);
+        formdata.append("email", values.email);
+        formdata.append("phone", values.phone);
+        formdata.append("preferred_date", values.date);
+        formdata.append("preferred_time", values.time);
+        formdata.append("health_concern", values.health ?? "");
+        formdata.append("payment_status", "False");
+        formdata.append("amount", "300");
+
+
+        bookConsult(formdata, {
+
+            onSuccess: (response) => {
+
+                if (response.status >= 200 && response.status <= 300) {
+
+
+                    // Payment URL
+                    const paymentUrl = response?.data?.payment_data?.payment_url;
+
+
+                    if (paymentUrl) {
+
+                        window.location.href = paymentUrl;
+
+                    } else {
+                        
+                        toast.error("Payment URL Missing", { description: "Unable to proceed to payment, please contact support.", duration: 9000 });
+                    
+                    }
+                    
+
+                } else {
+
+                    toast.error("Ops..!", { description: "Something went wrong Please try again.", duration: 9000 })
+                    console.error(response);
+
+                }
+
+            }
+
+        })
+
     };
 
 
@@ -178,7 +231,7 @@ export default function DocForm() {
 
             {/* Email */}
             <div>
-                <label className="block text-left text-[#145566] mb-1">Email ID (Optional)</label>
+                <label className="block text-left text-[#145566] mb-1">Email ID</label>
                 <input
                     type="email"
                     autoComplete="email"
@@ -262,18 +315,35 @@ export default function DocForm() {
 
             {/* Payment */}
             <div>
+
                 <label className="block text-left text-[#145566] mb-1">
-                    Make Payment - ₹300 (Secure Razorpay or UPI integration)
+                    Make Payment - ₹300 (Secure payment or UPI integration)
                 </label>
+
+
                 <button
                     type="submit"
-                    className="w-full bg-[#145566] hover:cursor-pointer flex items-center justify-center text-white text-lg font-medium py-3 rounded-md transition-all duration-300 ease-in-out hover:bg-[#0e404d] hover:scale-105"
+                    disabled={isPending}
+                    className={`w-full bg-[#145566] flex items-center justify-center text-white text-lg font-medium py-3 rounded-md transition-all duration-300 ease-in-out ${isPending ? "opacity-50 cursor-not-allowed" : "hover:bg-[#0e404d] hover:scale-105 cursor-pointer"}`}
                 >
-                    Pay Now <LockKeyhole size={20} className="ml-2" />
+                    {isPending ? (
+                        <>
+                            Booking in Progress
+                            <LoaderCircle size={20} className="ml-2 animate-spin" />
+                        </>
+                    ) : (
+                        <>
+                            Pay Now
+                            <LockKeyhole size={20} className="ml-2" />
+                        </>
+                    )}
                 </button>
+
+
                 <p className="text-sm text-gray-400 mt-2">
                     Note: Your ₹300 will be completely refunded if you choose to proceed with any treatment plan suggested after consultation
                 </p>
+
             </div>
 
 

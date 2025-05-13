@@ -1,7 +1,7 @@
 import { CommonApi } from "./CommonApi";
 
 
-const Base_Url = "https://server.happycouplesolutions.com"
+const Base_Url = "http://server.happycouplesolutions.com"
 
 
 
@@ -80,9 +80,39 @@ export const GetSingleProduct = async (id: string) => {
 }
 
 
+
 // Get Home Slider
 export const GetHomeSlider = async () => {
 
     return await CommonApi("GET", `${Base_Url}/home-slier/`, "", {})
+
+}
+
+
+
+
+// Get Doctors
+export const GetDoctors = async () => {
+
+    return await CommonApi("GET", `${Base_Url}/doctors/`, "", {})
+
+}
+
+
+
+// Book Consult
+export const PostBookConsult = async (data: FormData) => {
+
+    return await CommonApi("POST", `${Base_Url}/initiate-payment-for-talk-to-doctor/`, data, {})
+
+}
+
+
+
+
+// Request Callback
+export const PostRequestCallback = async (data: FormData) => {
+
+    return await CommonApi("POST", `${Base_Url}/talk-to-expert-enquiry/`, data, {})
 
 }

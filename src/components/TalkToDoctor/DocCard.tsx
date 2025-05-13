@@ -10,11 +10,12 @@ interface DocCardProps {
     qualification: string;
     experience: string;
     language: string;
+    online : boolean
 
 }
 
 
-export default function DocCard({ image, name, specialization, qualification, experience, language }: DocCardProps) {
+export default function DocCard({ image, name, specialization, qualification, experience, language , online }: DocCardProps) {
 
 
     return (
@@ -49,8 +50,8 @@ export default function DocCard({ image, name, specialization, qualification, ex
 
                 {/* Availability  */}
                 <div className="mt-3">
-                    <span className="inline-block bg-transparent border border-[#16C272] text-[#078622] text-sm px-10 py-1 rounded-full font-semibold">
-                        Online
+                    <span className={`inline-block bg-transparent border ${online ? "border-[#16C272] text-[#078622]" : "border-red-500 text-red-500"}  text-sm px-10 py-1 rounded-full font-semibold`}>
+                         {online ? "Online" : "Offline"}
                     </span>
                 </div>
 
@@ -70,7 +71,7 @@ export default function DocCard({ image, name, specialization, qualification, ex
 
                 {/* Languages */}
                 <p className="text-sm text-gray-900 mt-1">
-                    Can speak in {language}
+                    {language}
                 </p>
 
 

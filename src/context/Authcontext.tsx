@@ -13,7 +13,7 @@ interface JwtPayload {
 
 
 
-// Define the AuthContext type
+// Define the AuthContext type  
 interface AuthContextType {
     isAuthenticated: boolean;
     login: (token: string) => void;

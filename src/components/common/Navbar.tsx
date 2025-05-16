@@ -15,7 +15,7 @@ const Navbar = () => {
   // Menu Items
   const menuItems = [
     { label: "Home", href: "/" },
-    { label: "AI Consultant", href: "/ai-consultant" },
+    { label: "AI Consultant", href: "/newfeature" },
     { label: "Explore Treatments", href: "/treatmentplans" },
     { label: "About Us", href: "/aboutus" },
   ];

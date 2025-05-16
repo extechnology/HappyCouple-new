@@ -6,7 +6,6 @@ const Base_Url = "https://server.happycouplesolutions.com"
 
 
 
-
 // User Register
 export const RegisterUser = async (data: any) => {
 
@@ -114,5 +113,55 @@ export const PostBookConsult = async (data: FormData) => {
 export const PostRequestCallback = async (data: FormData) => {
 
     return await CommonApi("POST", `${Base_Url}/talk-to-expert-enquiry/`, data, {})
+
+}
+
+
+
+
+// Get User saved address
+export const GetUserAddress = async (headers: any) => {
+
+    return await CommonApi("GET", `${Base_Url}/user-personal-information/`, "", headers)
+
+}
+
+
+
+// Add User Address
+export const PostUserAddress = async (data: FormData, headers: any) => {
+
+    return await CommonApi("POST", `${Base_Url}/user-personal-information/`, data, headers)
+
+}
+
+
+
+// Place Order
+export const PostPlaceOrder = async (data: FormData, headers: any) => {
+
+    return await CommonApi("POST", `${Base_Url}/initiate-payment-for-order/`, data, headers)
+
+}
+
+
+
+// Get Verify Order
+export const GetVerifyOrder = async (id: string, headers: any) => {
+
+    const params = new URLSearchParams({ transaction_id: id })
+
+    return await CommonApi("GET", `${Base_Url}/verify-orders/?${params.toString()}`, "", headers)
+
+}
+
+
+
+
+
+// Get User Orders
+export const GetUserOrders = async (headers: any) => {
+
+    return await CommonApi("GET", `${Base_Url}/user-orders/`, "", headers)
 
 }

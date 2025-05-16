@@ -58,7 +58,7 @@ export default function Footer() {
               <Link to={"/talktodoctor"} className="block hover:underline">Book Consultation</Link>
               <Link to={"/talktoexpert"} className="block hover:underline">Talk To Expert</Link>
               <Link to={"/auth"} className="block hover:underline">Login/Signup</Link>
-              <Link to={"/"} className="block hover:underline">My Orders</Link>
+              <Link to={"/orders"} className="block hover:underline">My Orders</Link>
             </div>
 
           </div>

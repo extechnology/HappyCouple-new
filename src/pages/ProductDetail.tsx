@@ -23,7 +23,7 @@ export default function ProductDetail() {
 
 
     // Handle Loading
-    if (isLoading || isFetching) return <DetailSkelton />
+    if (isLoading || isFetching || !ProductData) return <DetailSkelton />
 
 
 
@@ -43,14 +43,7 @@ export default function ProductDetail() {
 
 
                 {/* Product Details */}
-                <DetailCard
-                    image={ProductData?.image}
-                    price={ProductData?.price}
-                    rating={ProductData?.rating}
-                    title={ProductData?.name}
-                    description={ProductData?.description}
-                    concerned={ProductData?.concern}
-                />
+                <DetailCard productData={ProductData} />
 
 
 

@@ -6,7 +6,7 @@ import { useAddUserAddress } from "@/services/checkout/mutations";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import statesCitiesData from "@/data/indian-states-cities.json";
+import indianStatesCities from '..//../Data/indian-states-cities.json';
 import { useEffect, useState } from "react";
 import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
@@ -86,7 +86,7 @@ export const AddressForm = ({ onCancel }: AddressFormProps) => {
 
     // Update cities on state change
     useEffect(() => {
-        const stateData = statesCitiesData.states.find((item) => item.name === selectedState);
+        const stateData = indianStatesCities.states.find((item : any) => item.name === selectedState);
         setCities(stateData ? stateData.cities : []);
     }, [selectedState]);
 
@@ -215,7 +215,7 @@ export const AddressForm = ({ onCancel }: AddressFormProps) => {
                     <Label className="text-[#145566]">State</Label>
                     <select {...register("state")} className="w-full border border-gray-400 p-2 focus:!ring-2 focus:!ring-[#25434E] rounded">
                         <option value="" disabled>--Select State--</option>
-                        {statesCitiesData.states.map((item) => (
+                        {indianStatesCities.states.map((item : any) => (
                             <option key={item.name} value={item.name}>
                                 {item.name}
                             </option>

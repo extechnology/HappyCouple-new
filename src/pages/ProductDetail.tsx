@@ -136,7 +136,7 @@ export default function ProductDetail() {
 
 
                 {/* Related Products */}
-                <RelatedProducts />
+                <RelatedProducts  id={Number(id)}/>
 
 
             </div>

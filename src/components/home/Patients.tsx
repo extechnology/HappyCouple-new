@@ -11,15 +11,14 @@ export default function Patients() {
                 "I had doubts at first. The self-assessment + doctor call gave me a clear path. And I got my ₹300 back when I started treatment",
             name: "Rohan.S",
             age: "34 years old",
-            image:
-                "https://media.istockphoto.com/id/1682296067/photo/happy-studio-portrait-or-professional-man-real-estate-agent-or-asian-businessman-smile-for.jpg?s=612x612&w=0&k=20&c=9zbG2-9fl741fbTWw5fNgcEEe4ll-JegrGlQQ6m54rg=",
+            image:"/Rohan.jpg",
         },
         {
             quote:
                 "I didn’t want to take pills blindly. Their step-by-step approach helped me find a safe, effective solution",
             name: "Ajaya.M",
             age: "41 years old",
-            image:"/doc.png",
+            image:"/Ajaya.jpg",
         },
     ];
 

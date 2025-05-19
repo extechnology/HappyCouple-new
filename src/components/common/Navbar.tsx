@@ -24,7 +24,7 @@ const Navbar = () => {
 
   return (
 
-    <header className="w-full bg-[#EAF5F6] px-2 sm:px-4 py-2">
+    <header className="w-full bg-transparent px-2 sm:px-4 py-2">
 
 
       <nav className="mx-auto h-20 flex flex-wrap md:flex-nowrap items-center justify-between bg-[#25434E] rounded-[14px] px-6 sm:px-10 py-4 sm:py-5 relative z-50">

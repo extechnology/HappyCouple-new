@@ -23,7 +23,7 @@ const CheckoutSuccess = () => {
 
 
     // Handle Loading
-    if (isLoading || isFetching || !data) return <CheckoutSuccessLoader />;
+    if (isLoading || isFetching || !data) return <CheckoutSuccessLoader tittle='Verifying your order...' />;
 
 
 

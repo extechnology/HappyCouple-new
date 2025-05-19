@@ -1,7 +1,7 @@
 
 
 
-export default function CheckoutSuccessLoader() {
+export default function CheckoutSuccessLoader({ tittle }: { tittle: string }) {
 
     return (
 
@@ -34,7 +34,7 @@ export default function CheckoutSuccessLoader() {
 
             {/* Loading text */}
             <p className="text-white text-xl md:text-2xl font-semibold tracking-wide select-none">
-                Verifying your order...
+                 {tittle}
             </p>
         </main>
     )

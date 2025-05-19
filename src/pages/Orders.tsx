@@ -5,7 +5,7 @@ import { useGetAllOrders } from '@/services/orders/queries';
 import { OrderTypes } from '@/services/orders/types';
 import ServerError from '@/components/common/Error';
 import OrdercardLoader from '@/components/Loaders/OrdercardLoader';
-import { PackageSearch } from 'lucide-react';
+import { Package, PackageSearch } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 
@@ -52,10 +52,13 @@ export default function Orders() {
 
     return (
 
-        <div className="bg-[#f1fafd] min-h-screen px-4 md:px-16 py-8">
+        <div className="bg-[#f1fafd] min-h-screen px-2 md:px-16 py-8">
 
 
-            <h1 className="text-5xl font-serif mb-9">My Orders</h1>
+            <h1 className="gap-3 text-4xl sm:text-4xl md:text-5xl font-serif font-bold text-gray-800 mb-9">
+                My Orders
+                <Package className="w-8 sm:w-10 h-8 sm:h-10 text-primar inline-block ms-2" />
+            </h1>
 
 
 
@@ -63,7 +66,7 @@ export default function Orders() {
             <div className="flex flex-wrap items-center gap-4 mb-8">
                 <Tabs value={selectedTab} onValueChange={setSelectedTab}>
                     <TabsList
-                        className="flex flex-wrap sm:flex-nowrap gap-2 bg-transparent p-0 overflow-x-auto scrollbar-hide"
+                        className="flex flex-wrap sm:flex-nowrap gap-2 bg-transparent p-0"
                     >
                         {['All', 'PENDING', 'SHIPPED', 'DELIVERED', 'CANCELLED'].map((tab) => (
                             <TabsTrigger
@@ -81,7 +84,7 @@ export default function Orders() {
 
 
 
-            <div className="space-y-6">
+            <div className="space-y-6 pt-8 sm:pt-0">
 
 
                 {isLoading || isFetching || !filteredOrders ? (
@@ -98,61 +101,80 @@ export default function Orders() {
 
                                 {filteredOrders?.map((order: OrderTypes) => (
 
-                                    <Card key={order?.id} className="flex flex-col md:flex-row gap-4 items-center p-6 shadow-md">
 
-                                        <img
-                                            src={order?.product?.image}
-                                            alt="product"
-                                            loading='lazy'
-                                            className="w-32 h-auto object-contain"
-                                        />
-
-                                        <CardContent className="flex-1 w-full md:w-auto">
+                                    <Card key={order?.id} className="flex flex-col md:flex-row items-start md:items-center gap-4 p-3 sm:p-6 shadow-md rounded-xl border">
 
 
-                                            <div className="flex items-center gap-4 mb-2 text-sm">
+                                        {/* Product Image */}
+                                        <div className="w-full md:w-32 flex justify-center md:justify-start">
+                                            <img
+                                                src={order?.product?.image}
+                                                alt="product"
+                                                loading="lazy"
+                                                className="w-52 sm:w-28 h-28 object-contain rounded-md"
+                                            />
+                                        </div>
 
 
+                                        {/* Product Info */}
+                                        <CardContent className="flex-1 w-full">
+
+
+                                            <div className="flex flex-wrap items-center gap-2 sm:gap-4 mb-3 text-sm">
+
+
+                                                {/* Order Status */}
                                                 <span
-                                                    className={`px-2 py-0.5 rounded-full font-medium ${statusColors[order?.order_status]}`}
+                                                    className={`px-2 py-0.5 rounded-full font-medium text-xs sm:text-sm ${statusColors[order?.order_status]}`}
                                                 >
                                                     {order?.order_status}
                                                 </span>
 
 
-                                                <span className="text-gray-700 font-semibold">
-                                                    Ordered on  {order?.order_date
-                                                        ? new Date(order?.order_date)?.toLocaleDateString('en-GB', {
+                                                {/* Order Date */}
+                                                <span className="text-gray-600 font-medium text-xs sm:text-sm">
+                                                    Ordered on{' '}
+                                                    {order?.order_date
+                                                        ? new Date(order?.order_date).toLocaleDateString('en-GB', {
                                                             day: 'numeric',
                                                             month: 'short',
                                                             year: 'numeric',
-                                                        }) : 'No date available'}
+                                                        })
+                                                        : 'No date available'}
                                                 </span>
 
 
+                                                {/* Payment Status */}
                                                 <span
-                                                    className={`font-semibold px-3 py-1 rounded-full text-sm ${order?.paid
-                                                        ? 'bg-green-100 text-green-800'
-                                                        : 'bg-red-100 text-red-800'
+                                                    className={`font-semibold px-2.5 py-1 rounded-full text-xs sm:text-sm ${order?.paid
+                                                        ? 'bg-green-100 text-green-700'
+                                                        : 'bg-red-100 text-red-700'
                                                         }`}
                                                 >
                                                     {order?.paid ? 'Paid' : 'Payment Failed'}
                                                 </span>
 
+
                                             </div>
 
 
-                                            <p className="font-semibold text-base md:text-lg">
+                                            {/* Product Name */}
+                                            <p className="font-semibold text-base sm:text-lg text-gray-900">
                                                 {order?.product?.name}
                                             </p>
 
 
-                                            <p className="text-xl font-bold mt-2 mb-4">₹{order?.price}</p>
+                                            {/* Product Price */}
+                                            <p className="text-lg sm:text-xl font-bold text-gray-800 mt-1 sm:mt-2">
+                                                ₹{order?.price}
+                                            </p>
 
 
-                                            {/* <Button variant="outline" className="text-sm  rounded-md hover:cursor-pointer">
+                                            {/* Optional Button */}
+                                            {/* <Button variant="outline" className="mt-3 text-sm rounded-md">
                                                 View Details
                                             </Button> */}
+
 
                                         </CardContent>
 

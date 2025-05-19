@@ -82,7 +82,7 @@ export default function Footer() {
         <div className="mt-10 pt-6 border-t border-gray-500 flex flex-col gap-6 md:flex-row md:justify-between md:items-center">
 
           <p className="text-center md:text-left">
-            © 2025 Happy Couple Solutions. All rights reserved.
+            © 2025 Happy Couple Solution. All rights reserved.
           </p>
 
           <div className="flex flex-wrap justify-center md:justify-end gap-4">
@@ -106,7 +106,7 @@ export default function Footer() {
 
         <div className="w-full flex justify-center items-center mt-5">
 
-          <a href="https://exmedia.in" target="_blank" className="hover:underline">Powerd by ex-media</a>
+          <a href="https://exmedia.in" target="_blank" className="hover:underline">Powered by ex-media</a>
 
         </div>
 

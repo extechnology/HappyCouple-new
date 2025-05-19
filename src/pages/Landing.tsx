@@ -9,6 +9,7 @@ import Patients from "@/components/home/Patients";
 import FrequentlyAsked from "@/components/home/FrequentlyAsked";
 import Connection from "@/components/home/Connection ";
 import { BlurFade } from "@/components/magicui/blur-fade";
+import WhatssAppIcon from "@/components/common/WhatssAppIcon";
 
 
 export default function Landing() {
@@ -84,6 +85,12 @@ export default function Landing() {
         <BlurFade delay={0.25 * 2} blur="12px" inView>
           <Connection />
         </BlurFade>
+      </section>
+
+
+
+      <section id="whatsapp-icon">
+        <WhatssAppIcon />
       </section>
 
 

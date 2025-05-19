@@ -64,7 +64,7 @@ const TalkToDoctor = () => {
                     </div>
 
 
-                    {isLoading || isFetching ? (
+                    {isLoading || isFetching || !doctors ? (
 
                         <DocLoader />
 

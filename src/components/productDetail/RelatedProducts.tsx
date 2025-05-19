@@ -8,7 +8,7 @@ import CardSkelton from "../Loaders/CardSkelton";
 
 
 
-export default function RelatedProducts() {
+export default function RelatedProducts({id}: {id: number}) {
 
 
     // Get All Products Data
@@ -17,7 +17,7 @@ export default function RelatedProducts() {
 
 
     // Handle Loading
-    if (isLoading || isFetching) return <CardSkelton length={3} />
+    if (isLoading || isFetching || !AllProducts) return <CardSkelton length={3} />
 
 
 
@@ -71,7 +71,7 @@ export default function RelatedProducts() {
                 itemClass="carousel-item-padding-40-px"
             >
 
-                {AllProducts?.slice(0, 12)?.map((solution: ProductType) => (
+                {AllProducts?.filter(product => product?.id !== id)?.slice(0, 12)?.map((solution: ProductType)  => (
 
                     <div
                         key={solution?.id}

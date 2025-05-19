@@ -32,7 +32,7 @@ export default function OrderSummary({ selectedAddress }: { selectedAddress: Use
     // Check Product
     useEffect(() => {
         if (!product) {
-            toast.error("Ops..!", { description: "No Product Found....!", duration: 7000 })
+            toast.error("Oops..!", { description: "No Product Found....!", duration: 7000 })
             navigate("/treatmentplans");
         }
     }, [product]);
@@ -44,7 +44,7 @@ export default function OrderSummary({ selectedAddress }: { selectedAddress: Use
     const Order = () => {
 
 
-        if(!selectedAddress) return toast.error("Ops..!", { description: "Please select a delivery address.", duration: 7000 })
+        if(!selectedAddress) return toast.error("Oops..!", { description: "Please select a delivery address.", duration: 7000 })
 
 
         const formData = new FormData();
@@ -82,7 +82,7 @@ export default function OrderSummary({ selectedAddress }: { selectedAddress: Use
                 } else {
 
                     console.error("Failed to Place Order", response);
-                    toast.error("Ops..!", { description: "Something went wrong Please try again.", duration: 7000 })
+                    toast.error("Oops..!", { description: "Something went wrong Please try again.", duration: 7000 })
 
                 }
 

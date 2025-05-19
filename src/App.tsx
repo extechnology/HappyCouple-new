@@ -6,9 +6,12 @@ import { Toaster } from 'sonner';
 import ProtectedAuth from "./routes/ProtectedAuth.tsx";
 
 
-// Lazy loading 
+// Lazy loading layouts
 const MainLayout = lazy(() => import('./components/layout/MainLayout.tsx'))
 const AuthLayout = lazy(() => import('./components/layout/AuthLayout.tsx'))
+
+
+// Lazy loading pages
 const Landing = lazy(() => import('./pages/Landing.tsx'))
 const TreatmentPlan = lazy(() => import('./pages/TreatmentPlan.tsx'))
 const TalkToDoctor = lazy(() => import('./pages/TalkToDoctor.tsx'))
@@ -49,6 +52,7 @@ function App() {
           {/* Main Layout */}
           <Route element={<MainLayout />}>
 
+
             <Route path="/" element={<Landing />} />
 
             <Route path="/treatmentplans" element={<TreatmentPlan />} />
@@ -59,19 +63,11 @@ function App() {
 
             <Route path="/productdetail/:id" element={<ProductDetail />} />
 
-            <Route path="/checkout" element={<ProtectedAuth><Checkout /> </ProtectedAuth>} />
-
-            <Route path="/orders" element={<ProtectedAuth><Orders /> </ProtectedAuth>} />
-
-            <Route path="/orderdetails/:id" element={<ProtectedAuth><OrderDetails /> </ProtectedAuth>} />
-
             <Route path="/aboutus" element={<AboutUs />} />
 
             <Route path="/contactus" element={<ContactUs />} />
 
             <Route path="/bookconsultsuccess" element={<BookConsultSuccess />} />
-
-            <Route path="/ordersuccess" element={<ProtectedAuth><CheckoutSuccess /></ProtectedAuth>} />
 
             <Route path="/newfeature" element={<NewFeature />} />
 
@@ -82,6 +78,18 @@ function App() {
             <Route path="/refundpolicy" element={<RefundPolicy />} />
 
             <Route path="/shippingpolicy" element={<ShippingPolicy />} />
+
+
+
+            {/* Protected Routes */}
+            <Route path="/checkout" element={<ProtectedAuth><Checkout /> </ProtectedAuth>} />
+
+            <Route path="/orders" element={<ProtectedAuth><Orders /> </ProtectedAuth>} />
+
+            <Route path="/orderdetails/:id" element={<ProtectedAuth><OrderDetails /> </ProtectedAuth>} />
+
+            <Route path="/ordersuccess" element={<ProtectedAuth><CheckoutSuccess /></ProtectedAuth>} />
+
 
           </Route>
 
@@ -95,6 +103,7 @@ function App() {
           </Route>
 
 
+          {/* Not Found */}
           <Route path="*" element={<NotFound />} />
 
 

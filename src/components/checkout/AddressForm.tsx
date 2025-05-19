@@ -123,7 +123,7 @@ export const AddressForm = ({ onCancel }: AddressFormProps) => {
 
                 } else {
 
-                    toast.success("Ops..!", { description: "Something went wrong Please try again", duration: 5000 })
+                    toast.success("Oops..!", { description: "Something went wrong Please try again", duration: 5000 })
                     console.error(response);
 
                 }

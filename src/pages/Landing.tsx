@@ -89,6 +89,7 @@ export default function Landing() {
 
 
 
+      {/* WhattsApp Icon Button  */}
       <section id="whatsapp-icon">
         <WhatssAppIcon />
       </section>

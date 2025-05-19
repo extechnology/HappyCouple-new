@@ -109,6 +109,20 @@ export const PostBookConsult = async (data: FormData) => {
 
 
 
+
+// Get Verify Book Consult
+export const GetVerifyBookconsult = async (id: string, headers: any) => {
+
+    const params = new URLSearchParams({ transaction_id: id })
+
+    return await CommonApi("GET", `${Base_Url}/verify-talk-to-doctor-enquiry/?${params.toString()}`, "", headers)
+
+}
+
+
+
+
+
 // Request Callback
 export const PostRequestCallback = async (data: FormData) => {
 
@@ -137,6 +151,31 @@ export const PostUserAddress = async (data: FormData, headers: any) => {
 
 
 
+
+
+// Delete User Address
+export const DeleteUserAddress = async (id: number, headers: any) => {
+
+    const params = new URLSearchParams({ id: id.toString() })
+
+    return await CommonApi("DELETE", `${Base_Url}/user-personal-information/?${params}`, "", headers)
+
+}
+
+
+
+
+
+// Edit User Address
+export const EditUserAddress = async (data: FormData, headers: any) => {
+
+    return await CommonApi("PUT", `${Base_Url}/user-personal-information/`, data, headers)
+
+}
+
+
+
+
 // Place Order
 export const PostPlaceOrder = async (data: FormData, headers: any) => {
 
@@ -154,7 +193,6 @@ export const GetVerifyOrder = async (id: string, headers: any) => {
     return await CommonApi("GET", `${Base_Url}/verify-orders/?${params.toString()}`, "", headers)
 
 }
-
 
 
 

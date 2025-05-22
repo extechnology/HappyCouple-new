@@ -12,6 +12,7 @@ export default function Footer() {
 
       <div className="mx-auto px-4 md:px-14">
 
+
         {/* Top Section */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
 
@@ -29,17 +30,29 @@ export default function Footer() {
             <p>An initiative of</p>
             <p>Medresearch India Pvt. Ltd.</p>
             <p>
-              RKP.3/569C, Parammal Road, Ramanatukara, Kozhikode - 673 634
+              RKP.3/569C, Parammal Road, Ramanatukara, Kozhikode - 673 633
             </p>
+
             <a href="mailto:info@happycouplesolution.com" className="block hover:underline">
               info@happycouplesolution.com
             </a>
-            <a href="tel:+919020200100" className="block hover:underline">
-              +91 9020200100
-            </a>
-            <a href="tel:+919072399100" className="block hover:underline">
-              +91 9072399100, +91 9072377100
-            </a>
+
+
+            <div className="space-y-3 sm:space-x-2 flex flex-col sm:flex-row">
+
+              <a href="tel:+919020200100" className="block hover:underline">
+                +91 9020200100 ,
+              </a>
+
+              <a href="tel:+919072388100" className="block hover:underline">
+                +91 9072388100 ,
+              </a>
+
+              <a href="tel:+919072377100" className="block hover:underline">
+                +91 9072377100
+              </a>
+
+            </div>
 
           </div>
 
@@ -69,7 +82,7 @@ export default function Footer() {
           <div className="space-y-2">
             <Link to={"/aboutus"} className="block hover:underline">About Us</Link>
             <Link to={"/contactus"} className="block hover:underline">Contact Us</Link>
-            <Link to={"/"} className="block hover:underline">Location</Link>
+            <Link to={'/contactus'} className="block hover:underline">Location</Link>
             <Link to={"/"} className="block hover:underline">Support</Link>
           </div>
 

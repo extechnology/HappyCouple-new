@@ -218,7 +218,7 @@ export default function DocForm() {
                         autoFocus: false,
                         autoComplete: "tel",
                     }}
-                    dropdownClass="!text-left" // This is where the alignment change happens
+                    dropdownClass="!text-left"
                 />
                 {form.formState.errors.phone && (
                     <p className="text-red-500 text-sm text-start mt-2">

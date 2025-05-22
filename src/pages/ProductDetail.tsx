@@ -67,6 +67,7 @@ export default function ProductDetail() {
                         <TabsContent value="benefits" className="mt-[15rem] sm:mt-10 text-gray-800 space-y-2 list-disc list-inside">
                             <ul className="space-y-6 pl-4 list-disc">
                                 {ProductData?.benefits?.map((benefit: { id: number, benefit: string }) => {
+
                                     // Split the benefit string into two parts: before and after the colon
                                     const [title, description] = benefit?.benefit?.split(':');
 
@@ -75,6 +76,7 @@ export default function ProductDetail() {
                                             <strong>{title}:</strong> {description}
                                         </li>
                                     );
+                                    
                                 })}
                             </ul>
                         </TabsContent>
@@ -85,12 +87,10 @@ export default function ProductDetail() {
                         <TabsContent value="how" className="mt-[15rem] sm:mt-10">
                             <ul className="space-y-6 pl-4 list-disc">
                                 {ProductData?.how_to_use?.map((how: { id: number, how_to_use: string }) => {
-                                    // Split the benefit string into two parts: before and after the colon
-                                    const [title, description] = how?.how_to_use?.split(':');
 
                                     return (
                                         <li key={how?.id}>
-                                            <strong>{title}:</strong> {description}
+                                            {how?.how_to_use}
                                         </li>
                                     );
                                 })}
@@ -103,12 +103,13 @@ export default function ProductDetail() {
                         <TabsContent value="reviews" className="mt-[15rem] sm:mt-10">
                             <ul className="space-y-6 pl-4 list-disc">
                                 {ProductData?.reviews?.map((review: { id: number, review: string, rating: number }) => {
+                                    
                                     const stars = "★".repeat(review?.rating)
 
                                     return (
                                         <li key={review.id} className="text-gray-800">
                                             <span className="font-semibold text-yellow-500 text-lg">{stars} - </span>
-                                            <span className="italic">"{review?.review}"</span>
+                                            <span className="italic">{review?.review}</span>
                                         </li>
                                     );
                                 })}

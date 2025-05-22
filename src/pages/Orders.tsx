@@ -171,10 +171,11 @@ export default function Orders() {
 
 
                                             {/* Optional Button */}
-                                            {/* <Button variant="outline" className="mt-3 text-sm rounded-md">
-                                                View Details
-                                            </Button> */}
-
+                                            {/* <Link to={'/orderdetails/1'}>
+                                                <Button variant="outline" className="mt-3 text-sm rounded-md hover:cursor-pointer">
+                                                    View Details
+                                                </Button>
+                                            </Link> */}
 
                                         </CardContent>
 

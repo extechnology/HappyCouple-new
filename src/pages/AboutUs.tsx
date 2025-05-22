@@ -35,7 +35,7 @@ export default function AboutUs() {
 
                     <div className="space-y-8 text-justify text-base md:text-lg leading-loose">
                         <p>
-                            Welcome to Happy Couple Solutions! We provide accessible and confidential solutions designed to
+                            Welcome to Happy Couple Solution, We provide accessible and confidential solutions designed to
                             improve relationship happiness, wellness, and satisfaction. Specializing in innovative scientific
                             approaches, we offer high-quality care to address challenges such as stress, confidence issues, and
                             reduced happiness in relationships. Our team of experts is dedicated to breaking taboos around wellness

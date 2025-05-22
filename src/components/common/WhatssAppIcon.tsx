@@ -30,7 +30,7 @@ const WhatsAppChat = () => {
     return (
         <div
             className={cn(
-                "fixed bottom-4 right-4 md:bottom-6 md:right-6 z-50 transition-all duration-700 ease-in-out",
+                "fixed bottom-4 right-4 md:bottom-22 md:right-6 z-50 transition-all duration-700 ease-in-out",
                 isVisible
                     ? "translate-y-0 opacity-100"
                     : "translate-y-16 opacity-0"

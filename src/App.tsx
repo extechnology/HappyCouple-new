@@ -16,6 +16,7 @@ const Landing = lazy(() => import('./pages/Landing.tsx'))
 const TreatmentPlan = lazy(() => import('./pages/TreatmentPlan.tsx'))
 const TalkToDoctor = lazy(() => import('./pages/TalkToDoctor.tsx'))
 const TalkToExpert = lazy(() => import('./pages/TalkToExpert.tsx'))
+const AiConsult = lazy(() => import('./pages/AiConsult.tsx'))
 const ProductDetail = lazy(() => import('./pages/ProductDetail.tsx'))
 const Checkout = lazy(() => import('./pages/Checkout.tsx'))
 const Auth = lazy(() => import('./pages/Auth.tsx'))
@@ -58,6 +59,8 @@ function App() {
             <Route path="/treatmentplans" element={<TreatmentPlan />} />
 
             <Route path="/talktoexpert" element={<TalkToExpert />} />
+
+            <Route path="/aiconsult" element={<AiConsult />} />
 
             <Route path="/talktodoctor" element={<TalkToDoctor />} />
 

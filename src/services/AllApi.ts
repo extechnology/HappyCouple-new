@@ -203,3 +203,12 @@ export const GetUserOrders = async (headers: any) => {
     return await CommonApi("GET", `${Base_Url}/user-orders/`, "", headers)
 
 }
+
+
+
+// Submit contact form
+export const PostContactForm = async (data: FormData) => {
+    
+    return await CommonApi("POST", `${Base_Url}/contact/`, data, {})
+
+}

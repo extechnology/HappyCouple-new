@@ -15,7 +15,7 @@ const Navbar = () => {
   // Menu Items
   const menuItems = [
     { label: "Home", href: "/" },
-    { label: "AI Consultant", href: "/newfeature" },
+    { label: "AI Consultant", href: "/aiconsult" },
     { label: "Explore Treatments", href: "/treatmentplans" },
     { label: "About Us", href: "/aboutus" },
   ];
@@ -27,11 +27,11 @@ const Navbar = () => {
     <header className="w-full bg-transparent px-2 sm:px-4 py-2">
 
 
-      <nav className="mx-auto h-20 flex flex-wrap md:flex-nowrap items-center justify-between bg-[#25434E] rounded-[14px] px-6 sm:px-10 py-4 sm:py-5 relative z-50">
+      <nav className="mx-auto h-20 flex flex-wrap lg:flex-nowrap items-center justify-between bg-[#25434E] rounded-[14px] px-6 sm:px-10 py-4 sm:py-3 lg:py-5 relative z-50">
 
 
         {/* Logo and Mobile Toggle */}
-        <div className="flex items-center justify-between w-full md:w-auto">
+        <div className="flex items-center justify-between w-full lg:w-auto">
 
 
           <Link to="/" aria-label="Home" className="flex items-center">
@@ -40,7 +40,7 @@ const Navbar = () => {
 
 
           <button
-            className="md:hidden text-white p-2"
+            className="lg:hidden text-white p-2"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Toggle mobile menu"
           >
@@ -54,7 +54,7 @@ const Navbar = () => {
         {/* Menu Container */}
         <div
           className={`${isMenuOpen ? "max-h-[400px] opacity-100" : "max-h-0 opacity-0"
-            } md:max-h-full md:opacity-100 md:flex flex-col md:flex-row w-full md:w-auto gap-6 md:gap-10 transition-all duration-500 ease-in-out overflow-hidden md:overflow-visible bg-[#25434E] md:bg-transparent rounded-xl md:rounded-none mt-4 md:mt-0 text-center md:text-left`}
+            } lg:max-h-full lg:opacity-100 lg:flex flex-col lg:flex-row w-full lg:w-auto gap-6 lg:gap-10 transition-all duration-500 ease-in-out overflow-hidden lg:overflow-visible bg-[#25434E] lg:bg-transparent rounded-xl lg:rounded-none mt-4 lg:mt-0 text-center lg:text-left`}
         >
 
 
@@ -72,8 +72,8 @@ const Navbar = () => {
 
 
           {/* Mobile CTA Button Inside Dropdown */}
-          <div className="block md:hidden px-4 pb-2">
-            <Link to={'/talktodoctor'}>
+          <div className="block lg:hidden px-4 pb-2">
+            <Link to={'/talktodoctor'}  onClick={() => setIsMenuOpen(false)}>
               <Button className="w-full mt-2 text-black hover:cursor-pointer font-semibold text-lg bg-[#A7E8E0] hover:bg-[#8CD8D0] px-4 py-3 rounded-[12px] transition-transform hover:scale-105">
                 BOOK CONSULTATION
               </Button>
@@ -85,7 +85,7 @@ const Navbar = () => {
 
 
         {/* Desktop CTA Button */}
-        <div className="hidden md:block">
+        <div className="hidden lg:block">
           <Link to={'/talktodoctor'}>
             <Button className="bg-[#A7E8E0] hover:bg-[#8CD8D0] hover:cursor-pointer text-black font-semibold text-[14px] sm:text-[16px] px-5 py-6 rounded-[12px] transition-transform hover:scale-105">
               BOOK CONSULTATION

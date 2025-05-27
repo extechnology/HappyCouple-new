@@ -171,3 +171,63 @@ html {
     @apply bg-background text-foreground;
   }
 }
+
+
+
+/* Chat Bot */
+
+
+/* Default: Mobile-first approach */
+@media (min-width: 300px) {
+  .rcb-chat-window {
+    width: 95dvw !important;
+    height: 80vh !important;
+  }
+}
+
+
+/* Small devices (≥ 640px, tablets) */
+@media (min-width: 640px) {
+  .rcb-chat-window {
+    height: 70vh !important;
+    width: 600px !important;
+
+  }
+}
+
+
+/* Medium devices (≥ 768px, small laptops) */
+@media (min-width: 768px) {
+  .rcb-chat-window {
+    height: 80vh !important;
+    width: 750px !important;
+
+  }
+}
+
+
+/* Large devices (≥ 1024px, desktops) */
+@media (min-width: 1024px) {
+  .rcb-chat-window {
+    height: 600px !important;
+    width: 1000px !important;
+  }
+}
+
+
+/* Extra Large devices (≥ 1280px, large desktops) */
+@media (min-width: 1280px) {
+  .rcb-chat-window {
+    height: 550px !important;
+    width: 1200px !important;
+  }
+}
+
+
+/* Extra Large devices (≥ 1280px, large desktops) */
+@media (min-width: 1800px) {
+  .rcb-chat-window {
+    height: 700px !important;
+    width: 1700px !important;
+  }
+}

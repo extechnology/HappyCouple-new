@@ -1,11 +1,12 @@
 import { BlurFade } from "@/components/magicui/blur-fade"
-import { Send } from "lucide-react"
+import { LoaderCircle, Send } from "lucide-react"
 import { useForm } from "react-hook-form"
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
-
+import { useContactForm } from "@/services/utils/mutations";
+import { toast } from "sonner";
 
 
 
@@ -32,6 +33,13 @@ type FormData = z.infer<typeof formSchema>
 export default function ContactUs() {
 
 
+
+    // Contact Form
+    const { mutateAsync: contactForm, isPending } = useContactForm();
+
+
+
+
     // use form with zod
     const form = useForm<FormData>({
         resolver: zodResolver(formSchema),
@@ -50,8 +58,33 @@ export default function ContactUs() {
     // Form Submit
     const onSubmit = (data: FormData) => {
 
+        const formdata = new FormData();
 
-        console.log(data);
+        formdata.append("name", data.name);
+        formdata.append("email", data.email);
+        formdata.append("phone", data.phone);
+        formdata.append("subject", data.subject);
+        formdata.append("message", data.message);
+
+
+        contactForm(formdata, {
+
+            onSuccess: (response) => {
+
+                if (response.status >= 200 && response.status <= 300) {
+
+                    toast.success("Message Sent", { description: "Your message has been sent successfully and we will get back to you soon", duration: 5000 })
+                    form.reset();
+
+                } else {
+
+                    console.error(response);
+                    toast.error("Ops..!", { description: "Something went wrong Please try again.", duration: 5000 })
+
+                }
+            }
+
+        })
 
     }
 
@@ -169,9 +202,19 @@ export default function ContactUs() {
 
                                 <button
                                     type="submit"
-                                    className="w-full hover:cursor-pointer flex items-center justify-center bg-[#145566] text-white py-3 rounded-lg transition-all duration-300 ease-in-out transform hover:bg-[#0f3f4c] hover:scale-105 hover:shadow-lg"
+                                    disabled={isPending}
+                                    className={`${isPending ? "opacity-50 cursor-not-allowed" : ""} w-full hover:cursor-pointer flex items-center justify-center bg-[#145566] text-white py-3 rounded-lg transition-all duration-300 ease-in-out transform hover:bg-[#0f3f4c] hover:scale-105 hover:shadow-lg`}
                                 >
-                                    <Send className="mr-2" size={20} /> Send it
+
+                                    {isPending ? (
+
+                                        <>Submitting... <LoaderCircle size={20} className="mr-2 animate-spin" /></>
+
+                                    ) : (
+
+                                        <><Send className="mr-2" size={20} /> Send it </>
+                                    )}
+
                                 </button>
 
 

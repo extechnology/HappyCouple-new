@@ -26,7 +26,6 @@ const Orders = lazy(() => import('./pages/Orders.tsx'))
 const OrderDetails = lazy(() => import('./pages/OrderDetails.tsx'))
 const BookConsultSuccess = lazy(() => import('./pages/BookingSuccess.tsx'))
 const CheckoutSuccess = lazy(() => import('./pages/CheckoutSuccess.tsx'))
-const NewFeature = lazy(() => import('./pages/NewFeature.tsx'))
 const Terms = lazy(() => import('./pages/Terms.tsx'))
 const Privacy = lazy(() => import('./pages/Privacy.tsx'))
 const RefundPolicy = lazy(() => import('./pages/RefundPolicy.tsx'))
@@ -71,8 +70,6 @@ function App() {
             <Route path="/contactus" element={<ContactUs />} />
 
             <Route path="/bookconsultsuccess" element={<BookConsultSuccess />} />
-
-            <Route path="/newfeature" element={<NewFeature />} />
 
             <Route path="/termsandconditions" element={<Terms />} />
 

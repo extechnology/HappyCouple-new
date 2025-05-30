@@ -48,7 +48,7 @@ export default function AiConsult() {
     const settings = {
 
         general: { embedded: true, primaryColor: "#1a879c", secondaryColor: '#25434E', showFooter: false },
-        chatHistory: { storageKey: "ai-consult" },
+        chatHistory: { disabled: true },
         showFooter: { disabled: true },
         botBubble: { simStream: true, showAvatar: true, animate: true, simulateStream: true, streamSpeed: 25, avatar: "/bot-icon.png" },
         header: { title: (<div style={{ cursor: "pointer", margin: 0, fontSize: 20, fontWeight: "bold", fontFamily: "serif" }} >Self Assessment</div>), avatar: "/bot-icon.png" },

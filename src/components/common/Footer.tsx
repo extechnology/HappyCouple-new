@@ -62,7 +62,7 @@ export default function Footer() {
 
             <div className="space-y-2">
               <Link to={"/"} className="block hover:underline">Home</Link>
-              <Link to={'/'} className="block hover:underline">AI Consultant</Link>
+              <Link to={'/aiconsult'} className="block hover:underline">AI Consultant</Link>
               <Link to={'/treatmentplans'} className="block hover:underline">Explore Treatments</Link>
               <Link to={"/talktodoctor"} className="block hover:underline">Talk To Doctor</Link>
             </div>

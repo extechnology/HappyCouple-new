@@ -10,6 +10,23 @@ import { Stethoscope } from "lucide-react";
 
 
 
+// Chat Bot Data Types
+interface BotDataType {
+    phone?: string;
+    gender?: string;
+    male_option?: string;
+    ed_option?: string;
+    pe_option?: string;
+    low_interest_option?: string;
+    female_option?: string;
+    sexual_option?: string;
+    trouble_sleeping?: string;
+    stressed_or_anxious?: string;
+    tired_low_in_energy_or_demotivated?: string;
+}
+
+
+
 
 export default function AiConsult() {
 
@@ -22,7 +39,7 @@ export default function AiConsult() {
 
 
     // Chat Bot Data
-    const [BotData, SetBotData] = useState({})
+    const [BotData, SetBotData] = useState<BotDataType>()
 
 
 
@@ -949,10 +966,120 @@ export default function AiConsult() {
             options: ["Rarely", "Sometimes", "Often"],
             chatDisabled: true,
             function: (params: any) => SetBotData({ ...BotData, tired_low_in_energy_or_demotivated: params.userInput }),
-            path: ""
+            path: async (params: any) => {
+
+                const sleep = BotData?.trouble_sleeping;
+                const stress = BotData?.stressed_or_anxious;
+                const tired = params.userInput;
+
+
+                if (!sleep || !stress || !tired) {
+                    await params.injectMessage("❌ Missing one or more required responses.");
+                    return "path_end";
+                }
+
+
+                // If the input is 1st according to the flow chart
+                if ((stress === "Rarely" && tired === "Rarely" && sleep === "No")) {
+
+                    return "input_1";
+                }
+
+
+                // Mild Stress Case
+                if (((stress === "Rarely" && tired === "Sometimes" && sleep === "No") || (stress === "Rarely" && tired === "Often" && sleep === "No") || (stress === "Rarely" && tired === "Rarely" && sleep === "Yes") || (stress === "Rarely" && tired === "Often" && sleep === "Yes") || (stress === "Rarely" && tired === "Sometimes" && sleep === "Yes"))) {
+
+                    return "mild_stress";
+
+                }
+
+
+                // Moderate Stress Case
+                if (((stress === "Sometimes" && tired === "Rarely" && sleep === "No") || (stress === "Sometimes" && tired === "Sometimes" && sleep === "No") || (stress === "Sometimes" && tired === "Often" && sleep === "No") || (stress === "Sometimes" && tired === "Rarely" && sleep === "Yes") || (stress === "Sometimes" && tired === "Sometimes" && sleep === "Yes") || (stress === "Sometimes" && tired === "Often" && sleep === "Yes"))) {
+
+                    return "Moderate_Stress";
+
+                }
+
+
+                // Severe_Stress Case
+                if (((stress === "Frequently" && tired === "Rarely" && sleep === "No") || (stress === "Frequently" && tired === "Sometimes" && sleep === "No") || (stress === "Frequently" && tired === "Often" && sleep === "No") || (stress === "Frequently" && tired === "Rarely" && sleep === "Yes") || (stress === "Frequently" && tired === "Sometimes" && sleep === "Yes") || (stress === "Frequently" && tired === "Often" && sleep === "Yes"))) {
+
+                    return "Severe_Stress";
+
+                }
+
+                await params.injectMessage("❌ Please select valid options.");
+                return "path_end";
+
+            }
 
         },
 
+        input_1: {
+
+            message: "Great ! You seem balanced and energized",
+            chatDisabled: true,
+            transition: { duration: 200 },
+            path: "mild_stress_2"
+        },
+
+        mild_stress: {
+
+            message: "Mild Stress",
+            chatDisabled: true,
+            transition: { duration: 200 },
+            path: "mild_stress_2"
+        },
+
+        mild_stress_2: {
+
+            message: "To ensure long-term wellness and prevent escalation, we recommend scheduling a doctor consultation to explore the best supportive strategies for you.",
+            chatDisabled: true,
+            transition: { duration: 200 },
+            path: "stress_end"
+        },
+
+        Moderate_Stress: {
+
+            message: "Moderate Stress",
+            chatDisabled: true,
+            transition: { duration: 200 },
+            path: "Moderate_Stress_2"
+        },
+
+        Moderate_Stress_2: {
+
+            message: "You appear to be experiencing moderate stress, which can affect your overall well-being. We recommend a doctor consultation to properly evaluate your situation and discuss any further supportive therapy if needed.",
+            chatDisabled: true,
+            transition: { duration: 200 },
+            path: "stress_end"
+        },
+
+        Severe_Stress: {
+
+            message: "Severe Stress",
+            chatDisabled: true,
+            transition: { duration: 200 },
+            path: "Severe_Stress_2"
+        },
+
+        Severe_Stress_2: {
+
+            message: "Your responses suggest severe stress that requires professional attention. We recommend scheduling a doctor consultation to determine the best course of action, which may include therapy, lifestyle support, or medical interventions.",
+            chatDisabled: true,
+            transition: { duration: 200 },
+            path: "stress_end"
+        },
+
+        stress_end: {
+
+            message: "During the doctor consultation, the expert will assess your situation and advise you if any counseling sessions, therapy plans, or medical treatments are needed.",
+            chatDisabled: true,
+            transition: { duration: 200 },
+            path: "path_end"
+
+        }
 
     }
 

@@ -50,8 +50,8 @@ export default function AiConsult() {
         general: { embedded: true, primaryColor: "#1a879c", secondaryColor: '#25434E', showFooter: false },
         chatHistory: { disabled: true },
         showFooter: { disabled: true },
-        botBubble: { simStream: true, showAvatar: true, animate: true, simulateStream: true, streamSpeed: 25, avatar: "/bot-icon.png" },
-        header: { title: (<div style={{ cursor: "pointer", margin: 0, fontSize: 20, fontWeight: "bold", fontFamily: "serif" }} >Self Assessment</div>), avatar: "/bot-icon.png" },
+        botBubble: { simStream: true, showAvatar: true, animate: true, simulateStream: true, streamSpeed: 25, avatar: "/bot-icon.jpg" },
+        header: { title: (<div style={{ cursor: "pointer", margin: 0, fontSize: 20, fontWeight: "bold", fontFamily: "serif" }} >Self Assessment</div>), avatar: "/bot-icon.jpg" },
         notification: { disabled: true },
         emoji: { disabled: true },
 

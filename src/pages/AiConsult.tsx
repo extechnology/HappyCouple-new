@@ -913,7 +913,7 @@ export default function AiConsult() {
 
                 switch (input) {
                     case "Yes":
-                        return "ask_phone";
+                        return "gender_select";
                     case "No":
                         return "end_no";
                     default:

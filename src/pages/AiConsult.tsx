@@ -911,15 +911,15 @@ export default function AiConsult() {
 
                 const input = params.userInput;
 
-                switch (input) {
-                    case "Yes":
-                        return "gender_select";
-                    case "No":
-                        return "end_no";
-                    default:
-                        await params.injectMessage("❌ Please select a valid option.");
-                        return "path_end";
-                }
+                if (input === "Yes" && BotData?.gender === "Male") return "male_options";
+
+                if (input === "Yes" && BotData?.gender === "Female") return "female_options";
+
+                if (input === "No") return "end_no";
+
+                await params.injectMessage("❌ Please select a valid option.");
+                return "path_end";
+
             }
 
         },

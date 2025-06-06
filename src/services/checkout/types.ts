@@ -7,8 +7,8 @@ export interface UserAddressTypes {
     profile_photo: string | null;
     name: string;
     phone: string;
-    phone2: string;
-    email: string;
+    phone2: string | null;
+    email: string | null;
     city: string;
     state: string;
     landmark: string;

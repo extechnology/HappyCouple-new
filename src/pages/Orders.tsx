@@ -7,6 +7,7 @@ import ServerError from '@/components/common/Error';
 import OrdercardLoader from '@/components/Loaders/OrdercardLoader';
 import { Package, PackageSearch } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { Button } from '@/components/ui/button';
 
 
 
@@ -15,6 +16,7 @@ import { Link } from 'react-router-dom';
 const statusColors: { [key: string]: string } = {
     CANCELLED: 'bg-red-200 text-red-800',
     DELIVERED: 'bg-green-200 text-green-800',
+    OUT_FOR_DELIVERY: "bg-green-200 text-green-800",
     PENDING: 'bg-blue-200 text-blue-800',
     SHIPPED: 'bg-yellow-200 text-yellow-800',
 };
@@ -39,7 +41,7 @@ export default function Orders() {
     // Filtered Orders
     const filteredOrders = useMemo(() => {
         if (!data) return [];
-        return selectedTab === 'All' ? data : data.filter((order: OrderTypes) => order.order_status === selectedTab);
+        return selectedTab === 'All' ? data : data?.filter((order: OrderTypes) => order?.order_status === selectedTab);
     }, [data, selectedTab]);
 
 
@@ -68,7 +70,7 @@ export default function Orders() {
                     <TabsList
                         className="flex flex-wrap sm:flex-nowrap gap-2 bg-transparent p-0"
                     >
-                        {['All', 'PENDING', 'SHIPPED', 'DELIVERED', 'CANCELLED'].map((tab) => (
+                        {['All', 'PENDING', 'SHIPPED', 'OUT_FOR_DELIVERY', 'DELIVERED', 'CANCELLED']?.map((tab) => (
                             <TabsTrigger
                                 key={tab}
                                 value={tab}
@@ -84,7 +86,7 @@ export default function Orders() {
 
 
 
-            <div className="space-y-6 pt-8 sm:pt-0">
+            <div className="space-y-6 pt-16 sm:pt-0">
 
 
                 {isLoading || isFetching || !filteredOrders ? (
@@ -109,7 +111,7 @@ export default function Orders() {
                                         <div className="w-full md:w-32 flex justify-center md:justify-start">
                                             <img
                                                 src={order?.product?.image}
-                                                alt="product"
+                                                alt={order?.product?.name}
                                                 loading="lazy"
                                                 className="w-52 sm:w-28 h-28 object-contain rounded-md"
                                             />
@@ -171,11 +173,11 @@ export default function Orders() {
 
 
                                             {/* Optional Button */}
-                                            {/* <Link to={'/orderdetails/1'}>
+                                            <Link to={`/orderdetails/${order?.id}`}>
                                                 <Button variant="outline" className="mt-3 text-sm rounded-md hover:cursor-pointer">
                                                     View Details
                                                 </Button>
-                                            </Link> */}
+                                            </Link>
 
                                         </CardContent>
 
@@ -194,7 +196,7 @@ export default function Orders() {
                                 </div>
 
                                 <p className="text-lg text-[#25434E] font-semibold text-center animate-fade-in-up transition-all duration-1000 ease-in-out">
-                                    No {selectedTab} ORDERS FOUND..!<br />
+                                    No {selectedTab === 'All' ? '' : selectedTab} ORDERS FOUND..!<br />
                                     <span className="text-md font-medium opacity-80">You haven't placed any orders yet.</span>
                                 </p>
 

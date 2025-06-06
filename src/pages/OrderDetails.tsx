@@ -1,226 +1,42 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { format } from 'date-fns';
-import { ArrowLeft, FileText, CalendarDays, Info } from 'lucide-react';
-import { useEffect, useState } from 'react';
+import { ArrowLeft, CalendarDays, Info } from 'lucide-react';
 import OrderProgressTracker from '@/components/Orders/OrderProgressTracker';
 import ProductCard from '@/components/Orders/ProductCard';
-import { toast } from 'sonner';
-
-
-
-
-// Mock data for orders
-const orders = [
-    {
-        id: 1,
-        status: 'shipped',
-        orderDate: '2023-05-10T10:30:00',
-        title: 'VitalCore Solution – Nutraceutical Therapy',
-        description: 'Advanced formula with essential nutrients for optimal health and wellness',
-        price: 1470,
-        quantity: 1,
-        image: 'https://images.unsplash.com/photo-1556155092-490a1ba16284?q=80&w=1470&auto=format&fit=crop',
-        deliveryDate: '2023-05-16T18:00:00',
-        trackingId: 'IN7236459871',
-        carrier: 'BlueDart Express',
-        isCancelled: false,
-        payment: {
-            method: 'Paytm',
-            transactionId: 'PTM78451236',
-            date: '2023-05-10T10:32:15',
-            amount: 1470,
-            status: 'completed',
-        },
-        address: {
-            name: 'Aditya C',
-            phone: '9074058593',
-            street: '123 Ocean View, Feroke Road, Ramanattukara',
-            landmark: 'Near City Hospital',
-            postal: '676509',
-            city: 'Calicut',
-            state: 'Kerala',
-        },
-        timeline: [
-            {
-                status: 'ordered',
-                date: '2023-05-10T10:30:00',
-                description: 'Your order has been placed successfully'
-            },
-            {
-                status: 'confirmed',
-                date: '2023-05-10T14:15:00',
-                description: 'Seller has processed your order'
-            },
-            {
-                status: 'shipped',
-                date: '2023-05-12T09:45:00',
-                description: 'Your item has been shipped'
-            },
-            {
-                status: 'out_for_delivery',
-                date: null,
-                description: 'Your item is out for delivery'
-            },
-            {
-                status: 'delivered',
-                date: null,
-                description: 'Your item has been delivered'
-            }
-        ]
-    },
-    {
-        id: 2,
-        status: 'delivered',
-        orderDate: '2023-04-15T14:20:00',
-        title: 'ImmunoBoost Complete - Immunity Support Supplement',
-        description: 'Powerful immune system support with vitamins C, D, zinc and elderberry',
-        price: 990,
-        quantity: 2,
-        image: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?q=80&w=1530&auto=format&fit=crop',
-        deliveryDate: '2023-04-20T12:30:00',
-        trackingId: 'IN9876543210',
-        carrier: 'DTDC Express',
-        isCancelled: false,
-        payment: {
-            method: 'Credit Card',
-            transactionId: 'CC78451285',
-            date: '2023-04-15T14:22:30',
-            amount: 1980,
-            status: 'completed',
-        },
-        address: {
-            name: 'Aditya C',
-            phone: '9074058593',
-            street: '123 Ocean View, Feroke Road, Ramanattukara',
-            landmark: 'Near City Hospital',
-            postal: '676509',
-            city: 'Calicut',
-            state: 'Kerala',
-        },
-        timeline: [
-            {
-                status: 'ordered',
-                date: '2023-04-15T14:20:00',
-                description: 'Your order has been placed successfully'
-            },
-            {
-                status: 'confirmed',
-                date: '2023-04-15T16:45:00',
-                description: 'Seller has processed your order'
-            },
-            {
-                status: 'shipped',
-                date: '2023-04-16T10:30:00',
-                description: 'Your item has been shipped'
-            },
-            {
-                status: 'out_for_delivery',
-                date: '2023-04-19T08:15:00',
-                description: 'Your item is out for delivery'
-            },
-            {
-                status: 'delivered',
-                date: '2023-04-19T14:25:00',
-                description: 'Your item has been delivered'
-            }
-        ]
-    },
-    {
-        id: 3,
-        status: 'cancelled',
-        orderDate: '2023-06-05T16:20:00',
-        title: 'Ultimate Wellness Pack - Premium Health Supplements',
-        description: 'Complete wellness solution with multiple supplements for overall health',
-        price: 2450,
-        quantity: 1,
-        image: 'https://images.unsplash.com/photo-1471864190281-a93a3070b6de?q=80&w=1470&auto=format&fit=crop',
-        deliveryDate: null,
-        trackingId: null,
-        carrier: null,
-        isCancelled: true,
-        payment: {
-            method: 'UPI',
-            transactionId: 'UPI78451290',
-            date: '2023-06-05T16:22:30',
-            amount: 2450,
-            status: 'refunded',
-        },
-        address: {
-            name: 'Aditya C',
-            phone: '9074058593',
-            street: '123 Ocean View, Feroke Road, Ramanattukara',
-            landmark: 'Near City Hospital',
-            postal: '676509',
-            city: 'Calicut',
-            state: 'Kerala',
-        },
-        timeline: [
-            {
-                status: 'ordered',
-                date: '2023-06-05T16:20:00',
-                description: 'Your order has been placed successfully'
-            },
-            {
-                status: 'confirmed',
-                date: '2023-06-05T17:15:00',
-                description: 'Seller has processed your order'
-            },
-            {
-                status: 'cancelled',
-                date: '2023-06-06T09:45:00',
-                description: 'Your order has been cancelled'
-            }
-        ]
-    }
-]
-
+import { useGetSingleOrders } from '@/services/orders/queries';
+import ServerError from '@/components/common/Error';
+import { TimelineTypes } from '@/services/orders/types';
 
 
 
 export default function OrderDetails() {
 
 
+
+    // Get Order ID
     const { id } = useParams();
+
 
 
     const navigate = useNavigate();
 
 
 
-    const [order, setOrder] = useState<typeof orders[0] | undefined>(
-        orders.find((o) => o.id.toString() === id)
-    );
-
-
-    const [isLoading, setIsLoading] = useState(true);
-
-
-    useEffect(() => {
-        // Simulate data loading
-        const timer = setTimeout(() => {
-            setIsLoading(false);
-
-            if (!order) {
-                toast.error("Order not found", {
-                    description: "We couldn't find the order you're looking for."
-                });
-            } else {
-                toast.success("Order details loaded", {
-                    description: `Viewing order #${order.id}`
-                });
-            }
-        }, 500);
-
-        setOrder(orders[0])
-
-        return () => clearTimeout(timer);
-    }, [order]);
+    // Get All User Orders
+    const { data: order, isLoading, isFetching, isError } = useGetSingleOrders(id!);
 
 
 
 
-    if (isLoading) {
+    // Handle Error
+    if (isError) return <ServerError />
+
+
+
+
+    // Handle Loading
+    if (isLoading || isFetching) {
         return (
             <div className="bg-[#f1fafd] min-h-screen flex flex-col items-center justify-center">
                 <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-[#19788e]"></div>
@@ -231,6 +47,7 @@ export default function OrderDetails() {
 
 
 
+    // Handle Order Not Found
     if (!order) {
         return (
             <div className="bg-[#f1fafd] min-h-screen p-6 flex flex-col items-center justify-center">
@@ -249,8 +66,9 @@ export default function OrderDetails() {
 
 
     // Current status step number (0-based index)
-    const currentStepIndex = order.timeline.findIndex(step => step.status === order.status);
-    const progressPercentage = order.isCancelled ? 100 : ((currentStepIndex + 1) / 5) * 100;
+    const totalSteps = order?.timeline?.length || 1;
+    const currentStepIndex = order?.timeline?.findIndex((step: TimelineTypes) => step?.status === order?.order_status);
+    const progressPercentage = order?.isCancelled || currentStepIndex === -1 ? 100 : ((currentStepIndex + 1) / totalSteps) * 100;
 
 
 
@@ -264,8 +82,8 @@ export default function OrderDetails() {
             <div className="backdrop-blur-sm bg-white/80 shadow-sm sticky top-0 z-20 mb-4 border-b border-gray-100">
                 <div className="container mx-auto px-4 py-4 max-w-6xl">
                     <button
-                        onClick={() => navigate(-1)}
-                        className="flex items-center gap-1.5 text-md text-[#25434E] hover:text-[#146275] transition-colors"
+                        onClick={() => navigate('/orders')}
+                        className="flex items-center gap-1.5 text-md text-[#25434E] hover:text-[#146275] transition-colors hover:cursor-pointer"
                     >
                         <ArrowLeft className="w-4 h-4" /> Back to Orders
                     </button>
@@ -288,23 +106,59 @@ export default function OrderDetails() {
                         <div>
 
                             <div className="flex items-center gap-2">
-                                <h1 className="text-xl font-bold text-gray-800">Order #{order.id}</h1>
-                                {order.isCancelled && (
-                                    <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">
+
+                                <h1 className="text-xl font-bold text-gray-800">Order Id: {order?.unique_order_id}</h1>
+
+
+                                {/* Cancelled */}
+                                {order?.isCancelled && (
+                                    <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs sm:text-sm font-semibold bg-red-100 text-red-800">
                                         Cancelled
                                     </span>
                                 )}
+
+
+                                {/* Payment Status */}
+                                <span
+                                    className={`font-semibold px-2.5 py-1 rounded-full text-xs sm:text-sm ${order?.paid
+                                        ? 'bg-green-100 text-green-700'
+                                        : 'bg-red-100 text-red-700'
+                                        }`}
+                                >
+                                    {order?.paid ? 'Paid' : 'Payment Failed'}
+                                </span>
+
                             </div>
 
-                            <p className="text-gray-500 flex items-center gap-1.5 mt-1">
-                                <CalendarDays className="w-4 h-4" />
-                                Placed on {format(new Date(order.orderDate), 'MMMM dd, yyyy')} at {format(new Date(order.orderDate), 'hh:mm a')}
-                            </p>
+
+                            {/* Order Dates */}
+                            <div className="flex flex-wrap items-center gap-x-8 text-sm mt-3 p-4 rounded-md border shadow-sm">
+
+                                {/* Placed on */}
+                                <p className="flex items-center gap-1.5 text-[#25434E] font-medium">
+                                    <CalendarDays className="w-4 h-4 text-[#20a0bb]" />
+                                    <span className="font-semibold text-black">Placed on:</span>&nbsp;
+                                    {format(new Date(order?.order_date), 'MMMM dd, yyyy')} at {format(new Date(order?.order_date), 'hh:mm a')}
+                                </p>
+
+
+                                {/* Expected Delivery */}
+                                {!order?.isCancelled && order?.excepted_delivery_date && (
+
+                                    <p className="flex items-center gap-1.5 text-[#25434E] font-medium">
+                                        <CalendarDays className="w-4 h-4 text-[#20a0bb]" />
+                                        <span className="font-semibold text-black">Expected Delivery:</span>&nbsp;
+                                        {format(new Date(order?.excepted_delivery_date), 'MMMM dd, yyyy')} Before 6PM
+                                    </p>
+                                )}
+
+                            </div>
+
 
                         </div>
 
 
-                        <div className="flex flex-wrap gap-3 sm:flex-nowrap">
+                        {/* <div className="flex flex-wrap gap-3 sm:flex-nowrap">
 
                             <Button
                                 variant="outline"
@@ -313,28 +167,26 @@ export default function OrderDetails() {
                                 <FileText className="w-4 h-4 mr-2" /> Download Invoice
                             </Button>
 
-                        </div>
+                        </div> */}
 
                     </div>
 
                 </div>
 
 
-
                 {/* Order progress tracker */}
                 <div className="mb-6 animate-fade-in" style={{ animationDelay: '100ms' }}>
                     <OrderProgressTracker
-                        steps={order.timeline}
-                        currentStatus={order.status}
+                        steps={order?.timeline}
+                        currentStatus={order?.order_status}
                         progressPercentage={progressPercentage}
-                        isCancelled={order.isCancelled}
-
+                        isCancelled={order?.isCancelled}
                     />
                 </div>
 
 
                 {/* Product Card */}
-                <ProductCard address={order.address} order={order} />
+                <ProductCard address={order?.address} order={order} />
 
 
             </div>

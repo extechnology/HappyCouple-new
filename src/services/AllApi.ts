@@ -1,6 +1,8 @@
 import { CommonApi } from "./CommonApi";
 
 
+
+// Base Url
 const Base_Url = "https://server.happycouplesolutions.com"
 
 
@@ -206,9 +208,20 @@ export const GetUserOrders = async (headers: any) => {
 
 
 
+// Get User single Orders
+export const GetUserSingleOrders = async (headers: any , id: string) => {
+
+    const params = new URLSearchParams({ order_id: id })
+
+    return await CommonApi("GET", `${Base_Url}/single-order/?${params.toString()}`, "", headers)
+
+}
+
+
+
 // Submit contact form
 export const PostContactForm = async (data: FormData) => {
-    
+
     return await CommonApi("POST", `${Base_Url}/contact/`, data, {})
 
 }

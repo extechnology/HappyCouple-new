@@ -1,19 +1,13 @@
 import { format, isValid } from 'date-fns';
-import { Check, Clock, Package, Truck, MapPin, XOctagon , Bike } from 'lucide-react';
+import { Check, Clock, Package, Truck, MapPin, XOctagon, Bike } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { TimelineTypes } from '@/services/orders/types';
 
 
 
-type TimelineStep = {
-    status: string;
-    date: string | null;
-    description: string;
-};
-
-
-
+// Interface for the OrderProgressTracker component
 interface OrderProgressTrackerProps {
-    steps: TimelineStep[];
+    steps: TimelineTypes[];
     currentStatus: string;
     progressPercentage: number;
     isCancelled?: boolean;
@@ -21,6 +15,7 @@ interface OrderProgressTrackerProps {
 
 
 
+// Mapping of status to icons
 const statusIcons = {
     ordered: Clock,
     confirmed: Package,
@@ -31,8 +26,7 @@ const statusIcons = {
 };
 
 
-
-
+// Mapping of status to labels
 const statusToLabel = {
     ordered: 'Ordered',
     confirmed: 'Confirmed',
@@ -81,20 +75,25 @@ const OrderProgressTracker = ({ steps, currentStatus, progressPercentage, isCanc
                 <div className="relative flex justify-between">
 
 
-                    {steps?.map((step, index) => {
+                    {steps?.map((step: TimelineTypes, index : number) => {
 
 
-                        const isCompleted = isCancelled ? step.status === 'cancelled' : steps.findIndex(s => s.status === currentStatus) >= index;
+                        const currentStepIndex = steps?.findIndex(s => s?.status.toLowerCase() === currentStatus?.toLowerCase());
 
-                        const isCurrent = step.status === currentStatus;
+                        const isCurrent = step?.status?.toLowerCase() === currentStatus?.toLowerCase();
 
-                        const Icon = statusIcons[step.status as keyof typeof statusIcons] || Package;
+                        const isCompleted = isCancelled ? step?.status?.toLowerCase() === 'cancelled' : currentStepIndex >= index;
 
 
-                        // Special styling for cancelled state
-                        const textColor = isCancelled && step.status === 'cancelled' ? 'text-red-500' : isCompleted ? 'text-[#25434E]' : 'text-gray-400';
+                        // Icons Dynamic
+                        const Icon = statusIcons[step?.status as keyof typeof statusIcons] || Package;
 
-                        const bgColor = isCancelled && step.status === 'cancelled' ? 'bg-red-500 text-white' : isCompleted ? 'bg-gradient-to-r from-[#25434E] to-[#20a0bb] text-white' : 'bg-gray-100 text-gray-400';
+
+                        // Text color and background Dyanmic
+                        const textColor = isCancelled && step?.status.toLowerCase() === 'cancelled' ? 'text-red-500' : isCompleted ? 'text-[#25434E]' : 'text-gray-400';
+
+                        const bgColor = isCancelled && step?.status.toLowerCase() === 'cancelled' ? 'bg-red-500 text-white' : isCompleted ? 'bg-gradient-to-r from-[#25434E] to-[#20a0bb] text-white' : 'bg-gray-100 text-gray-400';
+
 
 
                         return (
@@ -117,7 +116,7 @@ const OrderProgressTracker = ({ steps, currentStatus, progressPercentage, isCanc
                                     transition={{ type: "spring", stiffness: 400, damping: 10 }}
                                 >
                                     {isCompleted ? (
-                                        step.status === 'cancelled' ?
+                                        step?.status === 'cancelled' ?
                                             <XOctagon className="w-5 h-5" /> :
                                             <Check className="w-5 h-5" />
                                     ) : (
@@ -126,16 +125,17 @@ const OrderProgressTracker = ({ steps, currentStatus, progressPercentage, isCanc
                                 </motion.div>
 
 
+
                                 {/* Status label */}
-                                <p className={`mt-3 font-medium text-center ${isCancelled && step.status === 'cancelled' ? 'text-red-500' :
+                                <p className={`mt-3 font-medium text-center ${isCancelled && step?.status === 'cancelled' ? 'text-red-500' :
                                     isCompleted ? 'text-[#19788e]' : 'text-gray-400'
                                     }`}>
-                                    {statusToLabel[step.status as keyof typeof statusToLabel]}
+                                    {statusToLabel[step?.status as keyof typeof statusToLabel]}
                                 </p>
 
 
                                 {/* Date (if available) */}
-                                {step.date && isValid(new Date(step.date)) ? (
+                                {step?.date && isValid(new Date(step?.date)) ? (
                                     <p className="mt-1 text-xs text-center">
                                         {format(new Date(step.date), 'MMM dd, h:mm a')}
                                     </p>
@@ -148,7 +148,7 @@ const OrderProgressTracker = ({ steps, currentStatus, progressPercentage, isCanc
 
                                 {/* Status description */}
                                 <p className="mt-1 text-xs text-center max-w-[120px]">
-                                    {step.description}
+                                    {step?.description}
                                 </p>
 
 

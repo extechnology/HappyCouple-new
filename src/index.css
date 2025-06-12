@@ -224,10 +224,10 @@ html {
 }
 
 
-/* Extra Large devices (≥ 1280px, large desktops) */
+/* Extra Large devices (≥ 1800px, large desktops) */
 @media (min-width: 1800px) {
   .rcb-chat-window {
     height: 700px !important;
-    width: 1700px !important;
+    width: 1400px !important;
   }
 }

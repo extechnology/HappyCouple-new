@@ -1,7 +1,7 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { format } from 'date-fns';
-import { ArrowLeft, CalendarDays, Info } from 'lucide-react';
+import { ArrowLeft, CalendarDays, FileText, Info } from 'lucide-react';
 import OrderProgressTracker from '@/components/Orders/OrderProgressTracker';
 import ProductCard from '@/components/Orders/ProductCard';
 import { useGetSingleOrders } from '@/services/orders/queries';
@@ -158,16 +158,19 @@ export default function OrderDetails() {
                         </div>
 
 
-                        {/* <div className="flex flex-wrap gap-3 sm:flex-nowrap">
+                        {/* Download Invoice */}
+                        <div className="flex flex-wrap gap-3 sm:flex-nowrap">
 
-                            <Button
-                                variant="outline"
-                                className="border-[#19788e] font-semibold bg-[#25434E] text-white hover:bg-transparent hover:text-[#25434E] hover:cursor-pointer transition-colors ease-in-out duration-300"
-                            >
-                                <FileText className="w-4 h-4 mr-2" /> Download Invoice
-                            </Button>
+                            <a href={order?.invoice_pdf} target="_blank" rel="noopener noreferrer" download={order?.invoice_pdf}>
+                                <Button
+                                    variant="outline"
+                                    className="border-[#19788e] hover:scale-105 font-semibold bg-[#25434E] text-white hover:bg-transparent hover:text-[#25434E] hover:cursor-pointer transition-colors  duration-200"
+                                >
+                                    <FileText className="w-4 h-4 mr-2" /> Download Invoice
+                                </Button>
+                            </a>
 
-                        </div> */}
+                        </div>
 
                     </div>
 

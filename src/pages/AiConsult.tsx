@@ -1,7 +1,7 @@
 import { useState } from "react";
 import ChatBot from "react-chatbotify";
 import 'react-phone-input-2/lib/style.css';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useGetAllProducts } from "@/services/products/queries";
 import { ProductType } from "@/services/products/types";
 import ServerError from "@/components/common/Error";
@@ -30,6 +30,8 @@ interface BotDataType {
 
 export default function AiConsult() {
 
+
+    const navigate = useNavigate();
 
 
     // Get All Products
@@ -215,7 +217,7 @@ export default function AiConsult() {
 
         ed_option_2: {
 
-            message: "You may be facing mild erectile dysfunction, where the erection may sometimes not be firm enough for penetration. This could be due to fatigue, stress, poor sleep, or momentary distractions. The good news is — this level of ED is often reversible with the right lifestyle adjustments and natural support. You can begin with our Ligin nutraceutical therapy to support blood flow and sexual stamina. If you’re comfortable, our ErectAid Ultra vacuum device can also enhance erection firmness naturally.",
+            message: "You may be facing mild erectile dysfunction, where the erection may sometimes not be firm enough for penetration. This could be due to fatigue, stress, poor sleep, or momentary distractions. The good news is — this level of ED is often reversible with the right lifestyle adjustments and natural support. You can begin with our LyGin M nutraceutical therapy to support blood flow and sexual stamina. If you’re comfortable, our ErectAid Ultra vacuum device can also enhance erection firmness naturally.",
             chatDisabled: true,
             transition: { duration: 200 },
             path: "ligin_plus_erectaid"
@@ -224,7 +226,7 @@ export default function AiConsult() {
 
         ligin_plus_erectaid: {
 
-            message: "Recommended Products Ligin + ErectAid Ultra",
+            message: "Recommended Products LyGin M + ErectAid Ultra",
             chatDisabled: true,
             component: (
 
@@ -236,7 +238,7 @@ export default function AiConsult() {
 
                     ) : (
 
-                        AllProducts?.filter((product: ProductType) => product?.name === "LyGin" || product?.name === "Erectaid Vacuum Therapy Device")?.map((product: ProductType) => (
+                        AllProducts?.filter((product: ProductType) => product?.name === "Nutraceutical Solution" || product?.name === "Vacuum Therapy Solution")?.map((product: ProductType) => (
 
                             <div className="relative rounded-xl overflow-hidden shadow-md group">
 
@@ -279,7 +281,7 @@ export default function AiConsult() {
 
         ed_option_3: {
 
-            message: "It looks like you’re experiencing moderate erectile dysfunction, where maintaining a firm erection is frequently difficult.  This may be caused by factors like stress, early-stage vascular issues, low testosterone, or chronic fatigue. At this level, a combination approach is ideal: Start with Ligin, consider using the ErectAid Ultra device, and we highly recommend a free doctor consultation to explore safe and effective prescription options.",
+            message: "It looks like you’re experiencing moderate erectile dysfunction, where maintaining a firm erection is frequently difficult.  This may be caused by factors like stress, early-stage vascular issues, low testosterone, or chronic fatigue. At this level, a combination approach is ideal: Start with LyGin M, consider using the ErectAid Ultra device, and we highly recommend a free doctor consultation to explore safe and effective prescription options.",
             chatDisabled: true,
             transition: { duration: 200 },
             path: "ligin_plus_erectaid_plus_consultation"
@@ -288,7 +290,7 @@ export default function AiConsult() {
 
         ligin_plus_erectaid_plus_consultation: {
 
-            message: "Recommended Ligin + ErectAid Ultra + Doctor Consultation",
+            message: "Recommended LyGin M + ErectAid Ultra + Doctor Consultation",
             chatDisabled: true,
             component: (
 
@@ -302,7 +304,7 @@ export default function AiConsult() {
 
                         ) : (
 
-                            AllProducts?.filter((product: ProductType) => product?.name === "LyGin" || product?.name === "Erectaid Vacuum Therapy Device")?.map((product: ProductType) => (
+                            AllProducts?.filter((product: ProductType) => product?.name === "Nutraceutical Solution" || product?.name === "Vacuum Therapy Solution")?.map((product: ProductType) => (
 
                                 <div className="relative rounded-xl overflow-hidden shadow-md group">
 
@@ -390,7 +392,7 @@ export default function AiConsult() {
 
         ed_option_5: {
 
-            message: "You seem to have strong sexual desire, but your erection strength doesn’t match.  This pattern usually points to psychogenic erectile dysfunction, often linked to performance anxiety, overthinking, or fear of failure. This is highly treatable. We recommend Ligin therapy combined with stress relief support. You can also consult our doctor for added help.  Your confidence and strength can be restored — and we’re here to support you.",
+            message: "You seem to have strong sexual desire, but your erection strength doesn’t match.  This pattern usually points to psychogenic erectile dysfunction, often linked to performance anxiety, overthinking, or fear of failure. This is highly treatable. We recommend LyGin M therapy combined with stress relief support. You can also consult our doctor for added help.  Your confidence and strength can be restored — and we’re here to support you.",
             chatDisabled: true,
             transition: { duration: 200 },
             path: "ligin_plus_consultation"
@@ -399,7 +401,7 @@ export default function AiConsult() {
 
         ligin_plus_consultation: {
 
-            message: "Recommended Ligin + Doctor Consultation",
+            message: "Recommended LyGin M + Doctor Consultation",
             chatDisabled: true,
             component: (
 
@@ -413,7 +415,7 @@ export default function AiConsult() {
 
                         ) : (
 
-                            AllProducts?.filter((product: ProductType) => product?.name === "LyGin")?.map((product: ProductType) => (
+                            AllProducts?.filter((product: ProductType) => product?.name === "Nutraceutical Solution")?.map((product: ProductType) => (
 
                                 <div className="relative rounded-xl overflow-hidden shadow-md group">
 
@@ -470,7 +472,7 @@ export default function AiConsult() {
 
         ligin: {
 
-            message: "Recommended Ligin",
+            message: "Recommended LyGin M",
             chatDisabled: true,
             component: (
 
@@ -484,7 +486,7 @@ export default function AiConsult() {
 
                         ) : (
 
-                            AllProducts?.filter((product: ProductType) => product?.name === "LyGin")?.map((product: ProductType) => (
+                            AllProducts?.filter((product: ProductType) => product?.name === "Nutraceutical Solution")?.map((product: ProductType) => (
 
                                 <div className="relative rounded-xl overflow-hidden shadow-md group">
 
@@ -567,7 +569,7 @@ export default function AiConsult() {
 
         pe_option_2: {
 
-            message: "Your responses suggest moderate premature ejaculation, where you may finish within 1–3 minutes consistently.It could be linked to anxiety, reduced serotonin, or sensitivity. We suggest starting with Ligin, and optionally scheduling a doctor consultation for tailored medical options like Dapoxetil.  You’re on the right path by addressing this — let’s work together on lasting improvement.",
+            message: "Your responses suggest moderate premature ejaculation, where you may finish within 1–3 minutes consistently.It could be linked to anxiety, reduced serotonin, or sensitivity. We suggest starting with LyGin M, and optionally scheduling a doctor consultation for tailored medical options like Dapoxetil.  You’re on the right path by addressing this — let’s work together on lasting improvement.",
             chatDisabled: true,
             transition: { duration: 200 },
             path: "ligin_plus_consultation"
@@ -575,7 +577,7 @@ export default function AiConsult() {
 
         pe_option_3: {
 
-            message: "You may be experiencing mild premature ejaculation, where control is occasionally difficult. This often happens due to overstimulation, stress, or irregular sexual habits. Ligin, our herbal performance support, can help extend your control naturally. With a few adjustments, you can regain full control confidently.",
+            message: "You may be experiencing mild premature ejaculation, where control is occasionally difficult. This often happens due to overstimulation, stress, or irregular sexual habits. LyGin M, our herbal performance support, can help extend your control naturally. With a few adjustments, you can regain full control confidently.",
             chatDisabled: true,
             transition: { duration: 200 },
             path: "ligin_plus_consultation"
@@ -583,7 +585,7 @@ export default function AiConsult() {
 
         pe_option_4: {
 
-            message: "Excellent! Your responses show that you have good control over ejaculation. That’s a great sign of sexual health. If you ever feel the need for more stamina or energy, we have natural solutions like Ligin to support performance.For now, enjoy a healthy sexual life!",
+            message: "Excellent! Your responses show that you have good control over ejaculation. That’s a great sign of sexual health. If you ever feel the need for more stamina or energy, we have natural solutions like LyGin M to support performance.For now, enjoy a healthy sexual life!",
             chatDisabled: true,
             transition: { duration: 200 },
             path: "no_treatment_needed"
@@ -591,7 +593,7 @@ export default function AiConsult() {
 
         pe_option_5: {
 
-            message: "Your early ejaculation may be driven by performance anxiety or mental stress. This is very common and fully reversible.We suggest combining stress management techniques with Ligin support to regain control. You’re closer to balance than you think.",
+            message: "Your early ejaculation may be driven by performance anxiety or mental stress. This is very common and fully reversible.We suggest combining stress management techniques with LyGin M support to regain control. You’re closer to balance than you think.",
             chatDisabled: true,
             transition: { duration: 200 },
             path: "ligin_plus_consultation"
@@ -636,7 +638,7 @@ export default function AiConsult() {
 
         low_interest_option_2: {
 
-            message: "It appears you’re going through moderate low sexual interest, where desire is noticeably reduced. This could stem from hormonal fluctuations, work stress, or emotional disconnection. We suggest starting with Ligin, and optionally speaking to our doctor to rule out deeper concerns.",
+            message: "It appears you’re going through moderate low sexual interest, where desire is noticeably reduced. This could stem from hormonal fluctuations, work stress, or emotional disconnection. We suggest starting with LyGin M, and optionally speaking to our doctor to rule out deeper concerns.",
             chatDisabled: true,
             transition: { duration: 200 },
             path: "ligin_plus_consultation"
@@ -644,7 +646,7 @@ export default function AiConsult() {
 
         low_interest_option_3: {
 
-            message: "You may have mild reduction in sexual interest, which can happen due to stress, mental fatigue, or poor sleep. A natural supplement like Ligin, combined with lifestyle improvements, can help revive your energy and sexual  confidence.",
+            message: "You may have mild reduction in sexual interest, which can happen due to stress, mental fatigue, or poor sleep. A natural supplement like LyGin M, combined with lifestyle improvements, can help revive your energy and sexual  confidence.",
             chatDisabled: true,
             transition: { duration: 200 },
             path: "ligin"
@@ -652,7 +654,7 @@ export default function AiConsult() {
 
         low_interest_option_4: {
 
-            message: "If your desire fluctuates based on mood or stress, this is known as situational low desire. It’s common and often improves with better sleep, stress control, and energy support.Ligin can help, and so can mindfulness-based techniques. Let’s get you feeling your best again.",
+            message: "If your desire fluctuates based on mood or stress, this is known as situational low desire. It’s common and often improves with better sleep, stress control, and energy support.LyGin M can help, and so can mindfulness-based techniques. Let’s get you feeling your best again.",
             chatDisabled: true,
             transition: { duration: 200 },
             path: "ligin_plus_consultation"
@@ -925,9 +927,17 @@ export default function AiConsult() {
         },
 
         end_no: {
-
+            
             message: "😊 No worries at all !. Feel free to come back anytime. Have a great day and take care!",
             chatDisabled: true,
+            transition: { duration: 200 },
+            path: async () => {
+
+                setTimeout(() => {
+                    navigate("/")
+                }, 1400)
+                return ""
+            }
         },
 
 

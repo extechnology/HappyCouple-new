@@ -26,7 +26,7 @@ export default function HowWorks() {
             description:
                 "Take our AI-powered assessment based on global sexual wellness protocols to understand your current status.",
             button: "Get Started",
-            herf: "/assessment",
+            herf: "/aiconsult",
             image: "/Aessment-image.jpg",
         },
         {

@@ -17,14 +17,11 @@ interface AddressSectionProps {
 
 
 
-export const AddressSection: React.FC<AddressSectionProps> = ({ onAddressSelect, selectedAddress, }) => {
+export const AddressSection: React.FC<AddressSectionProps> = ({ onAddressSelect, selectedAddress }) => {
 
 
-
-    // const [addresses, setAddresses] = useState<UserAddressTypes[]>([]);
     const [showAddForm, setShowAddForm] = useState(false);
     const [showAllAddresses, setShowAllAddresses] = useState(false);
-
 
 
 
@@ -41,7 +38,6 @@ export const AddressSection: React.FC<AddressSectionProps> = ({ onAddressSelect,
 
         const defaultAddress = userAddress?.find((address: UserAddressTypes) => address?.default) || userAddress[0];
         onAddressSelect(defaultAddress);
-
 
     }, [isSuccess, userAddress]);
 

@@ -1,12 +1,19 @@
 import { Button } from "@/components/ui/button";
-import { Menu } from "lucide-react";
+import { KeyRound, LogOut, Menu, ShoppingBag, User } from "lucide-react";
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, } from "@/components/ui/dropdown-menu";
+import { useAuth } from "@/context/Authcontext";
+
 
 const Navbar = () => {
 
 
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  // Auth Context
+  const { isAuthenticated, logout } = useAuth();
+
+
+  const [isMenuOpen, setIsMenuOpen] = useState(false); // State to track menu open/close
 
 
   const location = useLocation(); // Get the current route
@@ -58,7 +65,7 @@ const Navbar = () => {
         >
 
 
-          {menuItems.map((item) => (
+          {menuItems?.map((item) => (
             <Link
               key={item.label}
               to={item.href}
@@ -73,7 +80,7 @@ const Navbar = () => {
 
           {/* Mobile CTA Button Inside Dropdown */}
           <div className="block lg:hidden px-4 pb-2">
-            <Link to={'/talktodoctor'}  onClick={() => setIsMenuOpen(false)}>
+            <Link to={'/talktodoctor'} onClick={() => setIsMenuOpen(false)}>
               <Button className="w-full mt-2 text-black hover:cursor-pointer font-semibold text-lg bg-[#A7E8E0] hover:bg-[#8CD8D0] px-4 py-3 rounded-[12px] transition-transform hover:scale-105">
                 BOOK CONSULTATION
               </Button>
@@ -85,12 +92,65 @@ const Navbar = () => {
 
 
         {/* Desktop CTA Button */}
-        <div className="hidden lg:block">
+        <div className="hidden lg:flex">
+
           <Link to={'/talktodoctor'}>
             <Button className="bg-[#A7E8E0] hover:bg-[#8CD8D0] hover:cursor-pointer text-black font-semibold text-[14px] sm:text-[16px] px-5 py-6 rounded-[12px] transition-transform hover:scale-105">
               BOOK CONSULTATION
             </Button>
           </Link>
+
+
+          {/*Login Dropdown */}
+          <div className="hidden lg:block relative">
+
+            <DropdownMenu>
+
+              <DropdownMenuTrigger className="outline-none">
+                <div className="hover:bg-[#3c5c68] p-2 rounded-full transition-colors cursor-pointer">
+                  <User size={28} color="#EAF5F6" />
+                </div>
+              </DropdownMenuTrigger>
+
+              <DropdownMenuContent
+                align="end"
+                className="bg-[#25434E] !border-t-0 border !rounded-t-none border-[#3c5c68] !shadow-none rounded-xl p-3 w-40 mt-2"
+              >
+
+                {/* My Orders */}
+                <DropdownMenuItem asChild>
+                  <Link to="/orders" className="text-[#EAF5F6] hover:cursor-pointer hover:text-[#A7E8E0] hover:bg-[#3c5c68] rounded-md px-3 py-2 w-full">
+                    My Orders <ShoppingBag size={20} className="text-white hover:text-[#3c5c68]" />
+                  </Link>
+                </DropdownMenuItem>
+
+                {/* Login / Logout */}
+                {isAuthenticated ? (
+                  <DropdownMenuItem asChild>
+                    <button
+                      onClick={() => logout()}
+                      className="text-[#EAF5F6] hover:cursor-pointer hover:text-[#A7E8E0] hover:bg-[#3c5c68] rounded-md px-3 py-2 w-full text-left"
+                    >
+                      Logout <LogOut size={20} className="text-white hover:text-[#3c5c68]" />
+                    </button>
+                  </DropdownMenuItem>
+                ) : (
+                  <DropdownMenuItem asChild>
+                    <Link
+                      to="/auth"
+                      className="text-[#EAF5F6] hover:cursor-pointer hover:text-[#A7E8E0] hover:bg-[#3c5c68] rounded-md px-3 py-2 w-full"
+                    >
+                      Login <KeyRound size={20} className="text-white hover:text-[#3c5c68]" />
+                    </Link>
+                  </DropdownMenuItem>
+                )}
+
+              </DropdownMenuContent>
+            </DropdownMenu>
+
+          </div>
+
+
         </div>
 
 

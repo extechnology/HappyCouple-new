@@ -11,14 +11,14 @@ export default function Patients() {
                 "I had doubts at first. The self-assessment + doctor call gave me a clear path. And I got my ₹300 back when I started treatment",
             name: "Rohan.S",
             age: "34 years old",
-            image:"/Rohan.jpg",
+            image: "/Rohan.jpg",
         },
         {
             quote:
                 "I didn’t want to take pills blindly. Their step-by-step approach helped me find a safe, effective solution",
             name: "Ajaya.M",
             age: "41 years old",
-            image:"/Ajaya.jpg",
+            image: "/Ajaya.jpg",
         },
     ];
 
@@ -74,7 +74,7 @@ export default function Patients() {
 
 
                                 <div className="flex gap-2 items-start mb-3">
-                                    <Quote size={28} color="#145566" />
+                                    <Quote size={28} color="#145566" className="transform -scale-x-100" />
                                     <p className="text-[#333] text-sm leading-relaxed text-justify">
                                         {t.quote}
                                     </p>
@@ -106,7 +106,7 @@ export default function Patients() {
                             <div className="hidden md:flex flex-1 p-6 flex-col gap-3">
 
                                 <div className="flex justify-center gap-5">
-                                    <Quote size={48} color="#145566" />
+                                    <Quote size={48} color="#145566" className="transform -scale-x-100" />
                                     <p className="text-[#333] text-base leading-relaxed text-justify">
                                         {t.quote}
                                     </p>

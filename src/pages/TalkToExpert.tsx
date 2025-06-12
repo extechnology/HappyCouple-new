@@ -182,13 +182,13 @@ export default function TalkToExpert() {
 
                     <div className="mt-8 space-y-4 flex flex-col justify-center items-center">
                         <a
-                            href="tel:+919020200100"
+                            href="tel:+919072377100"
                             className="w-52 sm:w-96 bg-[#145566] flex items-center justify-center text-white text-lg font-medium py-3 rounded-xl text-center transition duration-300 hover:bg-[#0e404e]"
                         >
                             Call Now <PhoneCallIcon className="ml-2" size={20} />
                         </a>
                         <a
-                            href="https://wa.me/919020200100"
+                            href="https://api.whatsapp.com/send?phone=919072377100&text=Hi%20Happycouplesolution"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="w-52 sm:w-96 border-2 flex items-center justify-center border-[#145566] text-[#145566] text-lg font-medium py-3 rounded-xl text-center transition duration-300 hover:bg-[#145566] hover:text-white"

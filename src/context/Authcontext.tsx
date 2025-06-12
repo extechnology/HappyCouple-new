@@ -107,6 +107,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
         localStorage.removeItem("token");
         setIsAuthenticated(false);
         window.dispatchEvent(new CustomEvent("authChanged"));
+        toast.success("Logout Success", { description: "You have successfully Logged out", duration: 5000 })
     }, []);
 
 

@@ -190,7 +190,7 @@ const HeroSection = () => {
                     variants={buttonVariants}
                 >
                     
-                    <Link to={'/ai-consultant'}>
+                    <Link to={'/aiconsult'}>
                         <button className="w-72 bg-[#25434E] hover:cursor-pointer text-white px-5 py-3 rounded-md font-semibold shadow-md transition duration-300 hover:bg-[#1b353d] hover:scale-105">
                             START SELF-ASSESSMENT
                         </button>

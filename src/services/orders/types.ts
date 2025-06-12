@@ -26,6 +26,7 @@ export interface OrderTypes {
     payment_status: 'PENDING' | 'PAID' | 'FAILED' | string;
     transaction_id: string;
     unique_order_id: string;
+    invoice_pdf : string
     isCancelled: boolean
     paid: boolean;
     user: number;

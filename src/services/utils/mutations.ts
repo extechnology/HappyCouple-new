@@ -1,5 +1,5 @@
 import { useMutation } from "@tanstack/react-query";
-import { PostContactForm } from "../AllApi";
+import { PostContactForm , PostAiConsultData } from "../AllApi";
 
 
 
@@ -21,5 +21,26 @@ export const useContactForm = () => {
 
     })
 
+}
+
+
+
+// Post Ai-consult Data
+export const useAiConsult = () => {
+
+    return useMutation({
+
+        mutationFn: async (data: FormData) => {
+
+            return await PostAiConsultData(data)
+
+        },
+        onError: (error) => {
+
+            console.error("Failed to Submit Ai-consult", error);
+
+        }
+
+    })
 
 }

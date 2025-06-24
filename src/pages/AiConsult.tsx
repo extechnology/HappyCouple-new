@@ -1,12 +1,14 @@
 import { useState } from "react";
-import ChatBot from "react-chatbotify";
-import 'react-phone-input-2/lib/style.css';
 import { Link, useNavigate } from "react-router-dom";
 import { useGetAllProducts } from "@/services/products/queries";
 import { ProductType } from "@/services/products/types";
+import { Stethoscope } from "lucide-react";
+import { useAiConsult } from "@/services/utils/mutations";
 import ServerError from "@/components/common/Error";
 import CardSkelton from "@/components/Loaders/CardSkelton";
-import { Stethoscope } from "lucide-react";
+import ChatBot from "react-chatbotify";
+import 'react-phone-input-2/lib/style.css';
+
 
 
 
@@ -40,8 +42,54 @@ export default function AiConsult() {
 
 
 
+    // post ai consult
+    const { mutate: PostAiConsult } = useAiConsult()
+
+
+
     // Chat Bot Data
     const [BotData, SetBotData] = useState<BotDataType>()
+
+
+
+
+    const SumbitAiData = () => {
+
+        const formdata = new FormData()
+
+        formdata.append("phone", BotData?.phone ?? "");
+        formdata.append("gender", BotData?.gender ?? "");
+        formdata.append("male_option", BotData?.male_option ?? "");
+        formdata.append("ed_option", BotData?.ed_option ?? "");
+        formdata.append("pe_option", BotData?.pe_option ?? "");
+        formdata.append("low_interest_option", BotData?.low_interest_option ?? "");
+        formdata.append("female_option", BotData?.female_option ?? "");
+        formdata.append("sexual_option", BotData?.sexual_option ?? "");
+        formdata.append("trouble_sleeping", BotData?.trouble_sleeping ?? "");
+        formdata.append("stressed_or_anxious", BotData?.stressed_or_anxious ?? "");
+        formdata.append("tired_low_in_energy_or_demotivated", BotData?.tired_low_in_energy_or_demotivated ?? "");
+
+
+
+        PostAiConsult(formdata, {
+
+            onSuccess: (response) => {
+
+                if (response.status >= 200 && response.status <= 300) {
+
+                    console.log("Successfullty Sent");
+
+                } else {
+
+                    console.error(response);
+
+                }
+
+            }
+
+        })
+
+    }
 
 
 
@@ -904,9 +952,20 @@ export default function AiConsult() {
 
         },
 
+        // Triggers PostAiConsultData
         path_end: {
 
+            message: "",
+            function: () => SumbitAiData(),
+            transition: { duration: 200 },
+            chatDisabled: true,
+            path: "path_end2"
+        },
+
+        path_end2: {
+
             message: "🩺 Start self-assessment again ?",
+            function: () => SumbitAiData(),
             options: ["Yes", "No"],
             chatDisabled: true,
             path: async (params: any) => {
@@ -926,8 +985,9 @@ export default function AiConsult() {
 
         },
 
+
         end_no: {
-            
+
             message: "😊 No worries at all !. Feel free to come back anytime. Have a great day and take care!",
             chatDisabled: true,
             transition: { duration: 200 },

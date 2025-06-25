@@ -1,12 +1,13 @@
 import { LoaderCircle, LockKeyhole } from "lucide-react";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState, useEffect } from "react";
+import { useBookConsult } from "@/services/Doctor/mutations";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { toast } from "sonner";
 import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
-import { useBookConsult } from "@/services/Doctor/mutations";
-import { toast } from "sonner";
+
 
 
 
@@ -68,7 +69,7 @@ type FormData = z.infer<typeof formSchema>;
 
 
 
-export default function DocForm() {
+export default function DocForm({ amount }: { amount: string }) {
 
 
 
@@ -121,6 +122,12 @@ export default function DocForm() {
     const onSubmit = (values: FormData) => {
 
 
+        if (!amount) {
+            toast.error("Ops..!", { description: "Something went wrong Please try again.", duration: 9000 })
+            return;
+        }
+
+
         const formdata = new FormData();
 
 
@@ -131,7 +138,7 @@ export default function DocForm() {
         formdata.append("preferred_time", values.time);
         formdata.append("health_concern", values.health ?? "");
         formdata.append("payment_status", "False");
-        formdata.append("amount", "300");
+        formdata.append("amount", amount.toString());
 
 
         bookConsult(formdata, {
@@ -150,11 +157,11 @@ export default function DocForm() {
                         window.location.href = paymentUrl;
 
                     } else {
-                        
+
                         toast.error("Payment URL Missing", { description: "Unable to proceed to payment, please contact support.", duration: 9000 });
-                    
+
                     }
-                    
+
 
                 } else {
 
@@ -317,7 +324,7 @@ export default function DocForm() {
             <div>
 
                 <label className="block text-left text-[#145566] mb-1">
-                    Make Payment - ₹300 (Secure payment or UPI integration)
+                    Make Payment - ₹{amount} (Secure payment or UPI integration)
                 </label>
 
 
@@ -341,7 +348,7 @@ export default function DocForm() {
 
 
                 <p className="text-sm text-gray-400 mt-2">
-                    Note: Your ₹300 will be completely refunded if you choose to proceed with any treatment plan suggested after consultation
+                    Note: Your ₹{amount} will be completely refunded if you choose to proceed with any treatment plan suggested after consultation
                 </p>
 
             </div>

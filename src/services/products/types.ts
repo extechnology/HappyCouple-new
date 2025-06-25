@@ -28,6 +28,8 @@ export interface ProductType {
     id: number;
     name: string;
     description: string;
+    title_description: string;
+    title_concern: string;
     concern: string;
     price: number;
     image: string;

@@ -6,7 +6,7 @@ import { useProduct } from "@/context/Productcontext";
 
 // Define TypeScript interface
 interface DetailCardProps {
-    productData : ProductType
+    productData: ProductType
 }
 
 
@@ -18,9 +18,11 @@ export default function DetailCard({ productData }: DetailCardProps) {
     const { setProduct } = useProduct();
 
 
+
     // Calculate Stars
     const filledStars = Math.floor(productData?.rating ?? 0);
     const emptyStars = 5 - filledStars;
+
 
 
 
@@ -66,11 +68,23 @@ export default function DetailCard({ productData }: DetailCardProps) {
 
                 {/* Description */}
                 <div className="mt-3 text-md text-gray-700 text-justify">
-                    <p><strong>For Concerned of :</strong></p>
-                    <p>{productData?.concern ?? "No Concern"}</p>
 
-                    <p className="mt-4"><strong>Description :</strong></p>
-                    <p>{productData?.description ?? "No Description"}</p>
+                    {productData?.title_concern && (
+                        <div className="mb-3">
+                            <p className="text-black"><strong>{productData?.title_concern.toUpperCase()} :</strong></p>
+                            <p>{productData?.concern}</p>
+
+                        </div>
+                    )}
+
+                    {productData?.title_description && (
+                        <>
+                            <p className="text-black"><strong>{productData?.title_description.toUpperCase()} :</strong></p>
+                            <p>{productData?.description}</p>
+
+                        </>
+                    )}
+
                 </div>
 
 

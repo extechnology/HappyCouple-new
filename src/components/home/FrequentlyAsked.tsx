@@ -4,6 +4,7 @@ import {
     AccordionItem,
     AccordionTrigger,
 } from "@/components/ui/accordion"
+import { useDcotorsPrice } from "@/services/utils/queries";
 import { Link } from "react-router-dom"
 
 
@@ -11,6 +12,10 @@ import { Link } from "react-router-dom"
 
 
 export default function FrequentlyAsked() {
+
+
+    // Get Doctors Consult Price
+    const { data: price } = useDcotorsPrice();
 
 
     // FAQ Data 
@@ -21,7 +26,7 @@ export default function FrequentlyAsked() {
                 "Yes, We follow the globally recognised European Association of Urology (EAU) guidelines.",
         },
         {
-            question: "Is the ₹300 consultation Refunded?",
+            question: `Is the ₹${price?.amount ?? 0} consultation Refunded?`,
             answer: "Yes, fully refunded when you begin any treatment.",
         },
         {

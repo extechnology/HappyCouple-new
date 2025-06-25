@@ -3,7 +3,7 @@ import { CommonApi } from "./CommonApi";
 
 
 // Base Url
-const Base_Url = "http://localhost:8000"
+const Base_Url = "https://server.happycouplesolutions.com"
 
 
 
@@ -113,11 +113,11 @@ export const PostBookConsult = async (data: FormData) => {
 
 
 // Get Verify Book Consult
-export const GetVerifyBookconsult = async (id: string, headers: any) => {
+export const GetVerifyBookconsult = async (id: string) => {
 
     const params = new URLSearchParams({ transaction_id: id })
 
-    return await CommonApi("GET", `${Base_Url}/verify-talk-to-doctor-enquiry/?${params.toString()}`, "", headers)
+    return await CommonApi("GET", `${Base_Url}/verify-talk-to-doctor-enquiry/?${params.toString()}`, "", {})
 
 }
 
@@ -233,5 +233,14 @@ export const PostContactForm = async (data: FormData) => {
 export const PostAiConsultData = async (data: FormData) => {
 
     return await CommonApi("POST", `${Base_Url}/bot-data/`, data, {})
+
+}
+
+
+
+// Get Docs Price
+export const GetDocsConsultPrice = async () => {
+
+    return await CommonApi("GET", `${Base_Url}/consultation-amount/`, "", {})
 
 }

@@ -76,7 +76,7 @@ export default function ProductDetail() {
                                             <strong>{title}:</strong> {description}
                                         </li>
                                     );
-                                    
+
                                 })}
                             </ul>
                         </TabsContent>
@@ -101,9 +101,12 @@ export default function ProductDetail() {
 
                         {/* Reviews */}
                         <TabsContent value="reviews" className="mt-[15rem] sm:mt-10">
+
+                            <p className="text-black font-medium mb-5">(Note: Names have been changed in accordance with our privacy policy.)</p>
+
                             <ul className="space-y-6 pl-4 list-disc">
                                 {ProductData?.reviews?.map((review: { id: number, review: string, rating: number }) => {
-                                    
+
                                     const stars = "★".repeat(review?.rating)
 
                                     return (
@@ -137,7 +140,7 @@ export default function ProductDetail() {
 
 
                 {/* Related Products */}
-                <RelatedProducts  id={Number(id)}/>
+                <RelatedProducts id={Number(id)} />
 
 
             </div>

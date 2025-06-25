@@ -1,14 +1,20 @@
 import DocForm from "@/components/TalkToDoctor/DocForm";
-import DocCard from "@/components/TalkToDoctor/DocCard";
+import DocCard from "@/components/productDetail/DocCard";
 import { BlurFade } from "@/components/magicui/blur-fade";
 import { useGetDoctors } from "@/services/Doctor/queries";
 import ServerError from "@/components/common/Error";
 import DocLoader from "@/components/Loaders/DocLoader";
 import { DoctorTypes } from "@/services/Doctor/types";
-
+import { useDcotorsPrice } from "@/services/utils/queries";
+import BookingFormSkeleton from "@/components/Loaders/BookingFormSkeleton";
 
 
 const TalkToDoctor = () => {
+
+
+
+    // Get Doctors Consult Price
+    const { data: price, isError: priceError, isLoading: priceLoading, isFetching: priceFetching } = useDcotorsPrice();
 
 
 
@@ -16,8 +22,14 @@ const TalkToDoctor = () => {
     const { data: doctors, isLoading, isFetching, isError } = useGetDoctors();
 
 
+
+    // Handle Loading for consult price
+    if (priceLoading || priceFetching || !price) return <BookingFormSkeleton />
+
+
+
     // Handle Error
-    if (isError) return <ServerError />
+    if (isError || priceError) return <ServerError />
 
 
 
@@ -42,7 +54,7 @@ const TalkToDoctor = () => {
 
 
                     {/* Form */}
-                    <DocForm />
+                    <DocForm amount={price?.amount} />
 
                 </section>
 
@@ -69,8 +81,8 @@ const TalkToDoctor = () => {
                         <DocLoader />
 
                     ) : (
-                        
-                        doctors?.map((doctor : DoctorTypes) => (
+
+                        doctors?.map((doctor: DoctorTypes) => (
                             <DocCard
                                 key={doctor?.id}
                                 image={doctor?.image}
@@ -79,7 +91,7 @@ const TalkToDoctor = () => {
                                 qualification={doctor?.description2}
                                 experience={doctor?.experience}
                                 language={doctor?.language}
-                                online = {doctor?.online}
+                                online={doctor?.online}
                             />
                         ))
 

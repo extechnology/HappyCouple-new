@@ -1,14 +1,20 @@
+import { useDcotorsPrice } from "@/services/utils/queries";
 import { Quote } from "lucide-react";
 
 
 export default function Patients() {
 
 
+    // Get Doctors Consult Price
+    const { data: price } = useDcotorsPrice();
+
+
+
     // Testimonials Data
     const testimonials = [
         {
             quote:
-                "I had doubts at first. The self-assessment + doctor call gave me a clear path. And I got my ₹300 back when I started treatment",
+                `I had doubts at first. The self-assessment + doctor call gave me a clear path. And I got my ₹${price?.amount ?? 0} back when I started treatment`,
             name: "Rohan.S",
             age: "34 years old",
             image: "/Rohan.jpg",

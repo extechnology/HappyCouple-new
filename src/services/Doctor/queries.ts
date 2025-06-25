@@ -33,18 +33,11 @@ export const useGetVerifyBookConsult = (id: string) => {
         queryKey: ["verifybookconsult"],
         queryFn: async () => {
 
-            if (!localStorage.getItem("token")) { throw new Error("Authentication token not found"); }
-
-            const token = localStorage.getItem("token")
-
-            const headers = { Authorization: `Bearer ${token}` }
-
-            const response = await GetVerifyBookconsult(id, headers)
+            const response = await GetVerifyBookconsult(id)
 
             return response.data 
 
         },
-
         staleTime: 1000 * 60 * 5,
 
     })

@@ -71,6 +71,8 @@ function App() {
 
             <Route path="/bookconsultsuccess" element={<BookConsultSuccess />} />
 
+            <Route path="/ordersuccess" element={<CheckoutSuccess />} />
+
             <Route path="/termsandconditions" element={<Terms />} />
 
             <Route path="/privacypolicy" element={<Privacy />} />
@@ -87,8 +89,6 @@ function App() {
             <Route path="/orders" element={<ProtectedAuth><Orders /> </ProtectedAuth>} />
 
             <Route path="/orderdetails/:id" element={<ProtectedAuth><OrderDetails /> </ProtectedAuth>} />
-
-            <Route path="/ordersuccess" element={<ProtectedAuth><CheckoutSuccess /></ProtectedAuth>} />
 
 
           </Route>

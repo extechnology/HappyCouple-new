@@ -69,23 +69,25 @@ export default function DetailCard({ productData }: DetailCardProps) {
                 {/* Description */}
                 <div className="mt-3 text-md text-gray-700 text-justify">
 
-                    {productData?.title_concern && (
-                        <div className="mb-3">
-                            <p className="text-black"><strong>{productData?.title_concern.toUpperCase()} :</strong></p>
-                            <p>{productData?.concern}</p>
 
-                        </div>
+                    {productData?.title_concern && (
+                        <p className="text-black"><strong>{productData?.title_concern.toUpperCase()} :</strong></p>
                     )}
+
+
+                    <p className="mb-3">{productData?.concern}</p>
+
 
                     {productData?.title_description && (
-                        <>
-                            <p className="text-black"><strong>{productData?.title_description.toUpperCase()} :</strong></p>
-                            <p>{productData?.description}</p>
-
-                        </>
+                        <p className="text-black"><strong>{productData?.title_description.toUpperCase()} :</strong></p>
                     )}
 
+
+                    <p>{productData?.description}</p>
+
+
                 </div>
+
 
 
                 <Link to={'/checkout'}>
@@ -93,6 +95,7 @@ export default function DetailCard({ productData }: DetailCardProps) {
                         BUY NOW
                     </button>
                 </Link>
+
 
             </div>
 

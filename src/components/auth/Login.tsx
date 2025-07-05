@@ -121,22 +121,22 @@ export default function Login() {
         const handleErrors = (errors: any) => {
             if (!errors) {
 
-                toast.error("Ops..!", { description: "Something went wrong Please try again.", duration: 5000 })
+                toast.error("Oops..!", { description: "Something went wrong Please try again.", duration: 5000 })
                 return;
 
             }
             if (typeof errors === "string") {
 
-                toast.error("Ops..!", { description: errors, duration: 5000 })
+                toast.error("Oops..!", { description: errors, duration: 5000 })
 
             } else if (errors.detail) {
 
-                toast.error("Ops..!", { description: errors.detail, duration: 5000 })
+                toast.error("Oops..!", { description: errors.detail, duration: 5000 })
 
             } else if (Array.isArray(errors)) {
 
                 errors.forEach((message: string) => {
-                    toast.error("Ops..!", { description: message, duration: 5000 })
+                    toast.error("Oops..!", { description: message, duration: 5000 })
                 });
 
             } else if (typeof errors === "object") {
@@ -144,16 +144,16 @@ export default function Login() {
                 Object.entries(errors).forEach(([key, value]) => {
                     if (Array.isArray(value)) {
                         console.log(key);
-                        value.forEach((message: string) => toast.error("Ops..!", { description: message, duration: 5000 }));
+                        value.forEach((message: string) => toast.error("Oops..!", { description: message, duration: 5000 }));
                     } else {
 
-                        toast.error("Ops..!", { description: value as string, duration: 5000 })
+                        toast.error("Oops..!", { description: value as string, duration: 5000 })
                     }
                 });
 
             } else {
 
-                toast.error("Ops..!", { description: "An unknown error occurred.", duration: 5000 })
+                toast.error("Oops..!", { description: "An unknown error occurred.", duration: 5000 })
             }
         };
 

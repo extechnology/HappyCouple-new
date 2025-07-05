@@ -43,7 +43,7 @@ export default function GoogleButton() {
 
                 if (!userInfoResponse.ok) {
 
-                    toast.error("Ops..!", { description: "Something went wrong Please try again.", duration: 5000 })
+                    toast.error("Oops..!", { description: "Something went wrong Please try again.", duration: 5000 })
 
                     throw new Error('Failed to fetch user info');
 
@@ -79,7 +79,7 @@ export default function GoogleButton() {
 
                                 console.log(response)
 
-                                toast.error("Ops..!", { description: "Something went wrong Please try again.", duration: 5000 })
+                                toast.error("Oops..!", { description: "Something went wrong Please try again.", duration: 5000 })
 
                             }
 
@@ -99,7 +99,7 @@ export default function GoogleButton() {
         onError(errorResponse) {
 
             console.log(errorResponse);
-            toast.error("Ops..!", { description: "Google Login Failed. Please try again.", duration: 5000 })
+            toast.error("Oops..!", { description: "Google Login Failed. Please try again.", duration: 5000 })
 
         },
 

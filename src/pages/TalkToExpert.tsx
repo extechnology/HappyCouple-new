@@ -150,7 +150,7 @@ export default function TalkToExpert() {
                 } else {
 
                     console.log(response);
-                    toast.error("Ops..!", { description: "Something went wrong Please try again.", duration: 8000 })
+                    toast.error("Oops..!", { description: "Something went wrong Please try again.", duration: 8000 })
 
                 }
 

@@ -123,7 +123,7 @@ export default function DocForm({ amount }: { amount: string }) {
 
 
         if (!amount) {
-            toast.error("Ops..!", { description: "Something went wrong Please try again.", duration: 9000 })
+            toast.error("Oops..!", { description: "Something went wrong Please try again.", duration: 9000 })
             return;
         }
 
@@ -165,7 +165,7 @@ export default function DocForm({ amount }: { amount: string }) {
 
                 } else {
 
-                    toast.error("Ops..!", { description: "Something went wrong Please try again.", duration: 9000 })
+                    toast.error("Oops..!", { description: "Something went wrong Please try again.", duration: 9000 })
                     console.error(response);
 
                 }

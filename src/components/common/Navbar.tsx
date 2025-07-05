@@ -66,16 +66,39 @@ const Navbar = () => {
 
 
           {menuItems?.map((item) => (
-            <Link
-              key={item.label}
-              to={item.href}
-              className={`block px-1 py-2 text-[16px] sm:text-[17px] tracking-wide hover:text-[#A7E8E0] transition duration-200 hover:scale-105 
+            <>
+              <Link
+                key={item.label}
+                to={item.href}
+                className={`block px-1 py-2 text-[16px] sm:text-[17px] tracking-wide hover:text-[#A7E8E0] transition duration-200 hover:scale-105 
                 ${location.pathname === item.href ? "text-[#A7E8E0]" : "text-[#EAF5F6]"}`}
-              onClick={() => setIsMenuOpen(false)} // close on link click
-            >
-              {item.label}
-            </Link>
+                onClick={() => setIsMenuOpen(false)} // close on link click
+              >
+                {item.label}
+              </Link>
+            </>
           ))}
+
+
+          {isAuthenticated ? (
+
+            <button onClick={logout} className="sm:hidden flex items-center w-full justify-center px-1 py-2 text-[16px] sm:text-[17px] tracking-wide text-[#EAF5F6] hover:text-[#A7E8E0] transition duration-200 hover:scale-105">
+
+              LogOut <LogOut size={20} className="text-white hover:text-[#3c5c68] ml-2" />
+
+            </button>
+
+          ) : (
+
+            <Link to={'/auth'} className="sm:hidden flex items-center w-full justify-center px-1 py-2 text-[16px] sm:text-[17px] tracking-wide text-[#EAF5F6] hover:text-[#A7E8E0] transition duration-200 hover:scale-105">
+
+              LogIn <KeyRound size={20} className="text-white hover:text-[#3c5c68] ml-2" />
+
+            </Link>
+
+          )}
+
+
 
 
           {/* Mobile CTA Button Inside Dropdown */}
@@ -89,6 +112,8 @@ const Navbar = () => {
 
 
         </div>
+
+
 
 
         {/* Desktop CTA Button */}
@@ -131,7 +156,7 @@ const Navbar = () => {
                       onClick={() => logout()}
                       className="text-[#EAF5F6] hover:cursor-pointer hover:text-[#A7E8E0] hover:bg-[#3c5c68] rounded-md px-3 py-2 w-full text-left"
                     >
-                      Logout <LogOut size={20} className="text-white hover:text-[#3c5c68]" />
+                      LogOut <LogOut size={20} className="text-white hover:text-[#3c5c68]" />
                     </button>
                   </DropdownMenuItem>
                 ) : (
@@ -140,7 +165,7 @@ const Navbar = () => {
                       to="/auth"
                       className="text-[#EAF5F6] hover:cursor-pointer hover:text-[#A7E8E0] hover:bg-[#3c5c68] rounded-md px-3 py-2 w-full"
                     >
-                      Login <KeyRound size={20} className="text-white hover:text-[#3c5c68]" />
+                      LogIn <KeyRound size={20} className="text-white hover:text-[#3c5c68]" />
                     </Link>
                   </DropdownMenuItem>
                 )}
@@ -149,7 +174,6 @@ const Navbar = () => {
             </DropdownMenu>
 
           </div>
-
 
         </div>
 

@@ -170,7 +170,7 @@ export default function EmailOtp({ isOpen, setIsOpen, RegisterData, reset }: Ema
                 } else {
 
                     console.log(response);
-                    toast.success("Ops..!", { description: "Something went wrong Please try again", duration: 5000 })
+                    toast.success("Oops..!", { description: "Something went wrong Please try again", duration: 5000 })
 
                 }
 

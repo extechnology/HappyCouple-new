@@ -1,7 +1,15 @@
 import { Link } from "react-router-dom";
+import { useAuth } from "@/context/Authcontext";
 
 
 export default function Footer() {
+
+
+
+  // Auth context
+  const { isAuthenticated } = useAuth();
+
+
 
 
   return (
@@ -70,7 +78,7 @@ export default function Footer() {
             <div className="space-y-2">
               <Link to={"/talktodoctor"} className="block hover:underline">Book Consultation</Link>
               <Link to={"/talktoexpert"} className="block hover:underline">Talk To Expert</Link>
-              <Link to={"/auth"} className="block hover:underline">Login/Signup</Link>
+              {!isAuthenticated && <Link to={"/auth"} className="block hover:underline">Login/Signup</Link>}
               <Link to={"/orders"} className="block hover:underline">My Orders</Link>
             </div>
 

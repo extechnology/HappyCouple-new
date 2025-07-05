@@ -79,7 +79,7 @@ export default function ContactUs() {
                 } else {
 
                     console.error(response);
-                    toast.error("Ops..!", { description: "Something went wrong Please try again.", duration: 5000 })
+                    toast.error("Oops..!", { description: "Something went wrong Please try again.", duration: 5000 })
 
                 }
             }

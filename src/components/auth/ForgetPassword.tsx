@@ -72,8 +72,8 @@ export default function ForgetPassword({ isOpen, setIsOpen }: ForgetPasswordProp
 
                 } else {
 
-                    console.log(response);
-                    toast.error("Ops..!", { description: "Something went wrong Please try again.", duration: 5000 })
+                    console.error(response);
+                    toast.error("Oops..!", { description: "Something went wrong Please try again.", duration: 5000 })
 
                 }
             }

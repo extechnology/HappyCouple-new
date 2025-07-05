@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useGetAllProducts } from "@/services/products/queries";
 import { ProductType } from "@/services/products/types";
 import { Stethoscope } from "lucide-react";
@@ -32,8 +32,6 @@ interface BotDataType {
 
 export default function AiConsult() {
 
-
-    const navigate = useNavigate();
 
 
     // Get All Products
@@ -964,41 +962,42 @@ export default function AiConsult() {
 
         path_end2: {
 
-            message: "🩺 Start self-assessment again ?",
-            function: () => SumbitAiData(),
-            options: ["Yes", "No"],
-            chatDisabled: true,
-            path: async (params: any) => {
+            message: "",
+            // message: "🩺 Start self-assessment again ?",
+            // function: () => SumbitAiData(),
+            // options: ["Yes", "No"],
+            // chatDisabled: true,
+            // path: async (params: any) => {
 
-                const input = params.userInput;
+            //     const input = params.userInput;
 
-                if (input === "Yes" && BotData?.gender === "Male") return "male_options";
+            //     if (input === "Yes" && BotData?.gender === "Male") return "male_options";
 
-                if (input === "Yes" && BotData?.gender === "Female") return "female_options";
+            //     if (input === "Yes" && BotData?.gender === "Female") return "female_options";
 
-                if (input === "No") return "end_no";
+            //     if (input === "No") return "end_no";
 
-                await params.injectMessage("❌ Please select a valid option.");
-                return "path_end";
+            //     await params.injectMessage("❌ Please select a valid option.");
+            //     return "path_end";
 
-            }
+            // }
 
         },
 
 
-        end_no: {
+        // end_no: {
 
-            message: "😊 No worries at all !. Feel free to come back anytime. Have a great day and take care!",
-            chatDisabled: true,
-            transition: { duration: 200 },
-            path: async () => {
+        //     message: "😊 No worries at all !. Feel free to come back anytime. Have a great day and take care!",
+        //     chatDisabled: true,
+        //     transition: { duration: 200 },
+        //     path: async () => {
 
-                setTimeout(() => {
-                    navigate("/")
-                }, 1400)
-                return ""
-            }
-        },
+        //         setTimeout(() => {
+        //             navigate("/")
+        //         }, 1400)
+        //         return ""
+        //     }
+        // },
 
 
         // Stress flow

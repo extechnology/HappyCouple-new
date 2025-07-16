@@ -1146,7 +1146,7 @@ export default function AiConsult() {
             message: "During the doctor consultation, the expert will assess your situation and advise you if any counseling sessions, therapy plans, or medical treatments are needed.",
             chatDisabled: true,
             transition: { duration: 200 },
-            path: "path_end"
+            path: "doctor_consultation"
 
         }
 
